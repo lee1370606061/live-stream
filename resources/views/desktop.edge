@@ -1,0 +1,187 @@
+@include('layouts.header')
+<!--比赛-->
+<div class="box matchBox">
+    <div class="matchList">
+        <ul class="check">
+            <li key="qb" onclick="checked(this,0)" class="nowChecked">
+                <p><img k="0" src="/desktop/picture/quanbu2.png" data-imgOld="/desktop/images/all.png">全部</p>
+            </li>
+            <li key="qb" onclick="checked(this,-1)">
+                <p><img k="-1" src="/desktop/picture/remen.png" data-imgOld="/desktop/images/remen.png">热门</p>
+            </li>
+            <li key="qb" onclick="checked(this,18)">
+                <p><img k="18" data-imgOld="/desktop/picture/5bac453691eb7.png" src="/desktop/images/zuqiu2.png" />足球</p>
+            </li>
+            <li key="qb" onclick="checked(this,17)">
+                <p><img k="17" data-imgOld="/desktop/picture/5bc0129942e1a.png" src="/desktop/images/5bc0129942e1a.png" />篮球</p>
+            </li>
+        </ul>
+        <div class="myContent" id="checked-qb" style="display: block;">
+            <div class="toToday"><span></span></div>
+
+            <div class="todayMatch match">
+                <p class="date today">01月19日<span>今天</span></p>
+                <div class="noMatch" style=" display:none">
+                    <p>当日暂无比赛</p>
+                </div>
+                @each(today in data.today)
+                <div class="contenTab">
+                    <div class="listBox" status="{{today.attr.status}}" key="{{today.attr.key}}" hot="{{today.attr.hot}}" s="{{today.attr.s}}" id="{{today.attr.id}}">
+                        <div class="myList">
+                        <div class="timer">{{today.timer}}</div>
+                            <div class="matchType">{{{today.matchType}}}</div>
+                            <div class="team">
+                                 {{{today.team}}}
+                            </div>
+                            @if(today.hot)
+                              <img class="hot" src="/desktop/picture/remen.png">
+                            @endif
+                           
+                        </div>
+                        <div class="download">
+                            <div class="status">
+                                @if(today.isStream)
+                                <a target="_blank" href="{{ route('live', { type: 'today', id: today.id }) }}">
+                                <p><img src="/desktop/picture/shiping.png">视频直播</p>
+                                </a>
+                                @else
+                                <a>
+                                <p class="notBegin"><img src="/desktop/picture/shiping.png">暂未开始</p>
+                            </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endeach  
+            </div>
+
+            <div class="tomorrowMatch match">
+                <p class="date tomorrow">01月20日<span>明天</span></p>
+                <div class="noMatch" style=" display:none">
+                    <p>当日暂无比赛</p>
+                </div>
+                @each(tomorrow in data.tomorrow)
+                <div class="contenTab">
+                    <div class="listBox" status="{{tomorrow.attr.status}}" key="{{tomorrow.attr.key}}" hot="{{tomorrow.attr.hot}}" s="{{tomorrow.attr.s}}" id="{{tomorrow.attr.id}}">
+                        <div class="myList">
+                        <div class="timer">{{tomorrow.timer}}</div>
+                            <div class="matchType">{{{tomorrow.matchType}}}</div>
+                            <div class="team">
+                                 {{{tomorrow.team}}}
+                            </div>
+                            @if(tomorrow.hot)
+                              <img class="hot" src="/desktop/picture/remen.png">
+                            @endif
+                           
+                        </div>
+                        <div class="download">
+                            <div class="status">
+                                @if(tomorrow.isStream)
+                                <a target="_blank" href="{{ route('live', { type: 'tomorrow', id: today.id }) }}">
+                                <p><img src="/desktop/picture/shiping.png">视频直播</p>
+                                </a>
+                                @else
+                                <a>
+                                <p class="notBegin"><img src="/desktop/picture/shiping.png">暂未开始</p>
+                            </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endeach  
+            </div>
+
+
+            <div class="afterTomorrowMatch match">
+                <p class="date afterTomorrow">01月21日<span>后天</span></p>
+                <div class="noMatch" style="display:none">
+                    <p>当日暂无比赛</p>
+                </div>
+                @each(afterTomorrow in data.afterTomorrow)
+                <div class="contenTab">
+                    <div class="listBox" status="{{afterTomorrow.attr.status}}" key="{{afterTomorrow.attr.key}}" hot="{{afterTomorrow.attr.hot}}" s="{{afterTomorrow.attr.s}}" id="{{afterTomorrow.attr.id}}">
+                        <div class="myList">
+                        <div class="timer">{{afterTomorrow.timer}}</div>
+                            <div class="matchType">{{{afterTomorrow.matchType}}}</div>
+                            <div class="team">
+                                 {{{afterTomorrow.team}}}
+                            </div>
+                            @if(afterTomorrow.hot)
+                              <img class="hot" src="/desktop/picture/remen.png">
+                            @endif
+                           
+                        </div>
+                        <div class="download">
+                            <div class="status">
+                                @if(afterTomorrow.isStream)
+                                <a target="_blank" href="{{ route('live', { type: 'afterTomorrow', id: today.id }) }}">
+                                <p><img src="/desktop/picture/shiping.png">视频直播</p>
+                                </a>
+                                @else
+                                <a>
+                                <p class="notBegin"><img src="/desktop/picture/shiping.png">暂未开始</p>
+                            </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endeach  
+            </div>
+
+
+            <div class="nextDayMatch match">
+                <p class="date afterTomorrow">01月22日<span>周五</span></p>
+                <div class="noMatch" style=" display:none">
+                    <p>当日暂无比赛</p>
+                </div>
+                @each(nextDay in data.nextDay)
+                <div class="contenTab">
+                    <div class="listBox" status="{{nextDay.attr.status}}" key="{{nextDay.attr.key}}" hot="{{nextDay.attr.hot}}" s="{{nextDay.attr.s}}" id="{{nextDay.attr.id}}">
+                        <div class="myList">
+                        <div class="timer">{{nextDay.timer}}</div>
+                            <div class="matchType">{{{nextDay.matchType}}}</div>
+                            <div class="team">
+                                 {{{nextDay.team}}}
+                            </div>
+                            @if(nextDay.hot)
+                              <img class="hot" src="/desktop/picture/remen.png">
+                            @endif
+                           
+                        </div>
+                        <div class="download">
+                            <div class="status">
+                                @if(nextDay.isStream)
+                                <a target="_blank" href="{{ route('live', { type: 'nextDay', id: today.id }) }}">
+                                <p><img src="/desktop/picture/shiping.png">视频直播</p>
+                                </a>
+                                @else
+                                <a>
+                                <p class="notBegin"><img src="/desktop/picture/shiping.png">暂未开始</p>
+                            </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endeach  
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divAdRight" style="DISPLAY: none; POSITION: absolute; TOP: 0px">  
+    <a>
+        <img src="{{homeDetails.promoteRightSrc}}" />
+    </a>
+    </div>  
+    
+    <div id="divAdLeft" style="DISPLAY: none; POSITION: absolute; TOP: 0px">  
+    
+    <a><img src="{{homeDetails.promoteLeftSrc}}" /></a>  
+    
+    </div>
+
+@include('layouts.footer')

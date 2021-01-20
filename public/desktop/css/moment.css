@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    color: #333333;
+    font-size: 14px;
+    font-family: "Microsoft YaHei" !important;
+    background: #F5F5F5 !important;
+    position: relative;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+
+/*.wrap-outer {
+	margin-left: calc(100vw - 100%);
+}*/
+
+ul li {
+    list-style: none;
+    text-decoration: none;
+}
+
+.box {
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    clear: both;
+}
+
+#returnTop {
+    width: 38px;
+    height: 38px;
+    position: fixed;
+    /*right: 300px;*/
+    bottom: 20%;
+    cursor: pointer;
+    display: none;
+    z-index: 9999;
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:active {
+    outline: transparent !important;
+    border: transparent !important;
+}
+
+button:focus {
+    outline: 0 !important;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.noData {
+    width: 130px !important;
+    height: 78px !important;
+    margin: 50px 0 10px 0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #333333;
+    text-decoration: none !important;
+}
+
+input {
+    font-size: 14px !important;
+}
+
+
+/*a:focus, a:hover{
+	color: #333333 !important;
+}*/
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    color: #FFFFFF !important;
+    background-color: #2E81FF !important;
+    border-color: #2E81FF !important;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    color: #333333 !important;
+    cursor: pointer;
+}
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span {
+    margin-left: 0;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+.example {
+    padding: 30px;
+}
+
+#page li {
+    display: inline-block;
+    border: 1px solid #dddddd;
+    border-left: none;
+}
+
+#page li:first-of-type {
+    border-left: 1px solid #dddddd;
+}
+
+#page li:last-of-type {
+    border-left: 1px solid #dddddd;
+}
+
+#page li a {
+    display: block;
+    padding: 6px 12px;
+}
+
+.activePage {
+    color: #ffffff !important;
+    background: #0d8ddb;
+    border: 1px solid #0d8ddb !important;
+}
+
+.activePage a {
+    color: #ffffff !important;
+}
+
+#page li p {
+    padding: 6px 12px;
+    margin: 0 !important;
+}
+
+@media screen and (max-width: 1920px) {
+    #returnTop {
+        right: 370px;
+    }
+}
+
+@media screen and (max-width: 1890px) {
+    #returnTop {
+        right: 335px;
+    }
+}
+
+@media screen and (max-width: 1800px) {
+    #returnTop {
+        right: 305px;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    #returnTop {
+        right: 258px;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    #returnTop {
+        right: 215px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    #returnTop {
+        right: 168px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    #returnTop {
+        right: 110px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    #returnTop {
+        right: 45px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #returnTop {
+        right: 20px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    #returnTop {
+        right: -25px;
+    }
+}
+
+.footer_info {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer_info a:hover {
+    color: #2ecaef
+}

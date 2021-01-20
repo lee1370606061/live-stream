@@ -1,0 +1,846 @@
+.hotMsg {
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.hotMsg>div {
+    float: left;
+}
+
+
+/*热门视频*/
+
+.video {
+    width: 730px;
+    height: 160px;
+    padding: 10px;
+    background: #FFFFFF;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: none;
+}
+
+.tab {
+    overflow: hidden;
+}
+
+.tab ul {
+    float: left;
+}
+
+.tab ul li {
+    padding: 0 10px 0 6px !important;
+    display: inline-block;
+    border-right: 1px solid #E6E6E6;
+}
+
+.tab ul li:hover {
+    color: #3696FF;
+}
+
+.tab ul a:last-of-type li {
+    border-right: none !important;
+}
+
+.tab>p>img {
+    width: 13px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 3px;
+}
+
+.tab>p {
+    width: 115px;
+    height: 20px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+    float: left;
+}
+
+.rightBtn {
+    float: right;
+}
+
+.rightBtn a:hover {
+    color: #FFFFFF;
+}
+
+.rightBtn p:first-of-type {
+    color: #FFFFFF;
+    padding: 0px 6px;
+    line-height: 22px;
+    text-align: center;
+    background: #2E81FF;
+    cursor: pointer;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.rightBtn p:first-of-type:hover {
+    background: #005BE6;
+}
+
+.rightBtn p:last-of-type {
+    cursor: pointer;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.rightBtn p:last-of-type:hover {
+    color: #2E81FF;
+}
+
+.rightBtn img {
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.anchorList {
+    width: 750px;
+    height: auto;
+    font-size: 16px;
+    padding: 20px 10px;
+    background: #FFFFFF;
+}
+
+.anchorList>p>img {
+    width: 13px;
+    height: auto;
+    margin-right: 6px;
+    vertical-align: sub;
+}
+
+.list {
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.myBox {
+    width: 170px;
+    height: 130px;
+    float: left;
+    position: relative;
+    margin: 6px 14px 20px 0;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #F4F4F4;
+}
+
+.myBox:nth-of-type(4n) {
+    margin: 6px 0 20px 0;
+}
+
+.bjImg {
+    width: 170px;
+    height: 98px;
+}
+
+.playImg {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 70px;
+    left: 43%;
+}
+
+.lable {
+    width: 162px;
+    height: 56px;
+    font-size: 13px;
+    position: absolute;
+    bottom: -12px;
+    left: 6px;
+}
+
+.anchorImg {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 2px;
+    vertical-align: top;
+}
+
+.lable p {
+    width: 130px;
+    height: 36px;
+    margin-top: 19px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.mengban {
+    width: 170px;
+    height: 98px;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mengban:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.playImg:hover .mengban {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+/*热门资讯*/
+
+.info {
+    width: 730px;
+    height: auto;
+    padding: 10px;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+
+.infoBox {
+    overflow: hidden;
+}
+
+.infoBasketball,
+.infoFootball {
+    margin-top: 15PX;
+    float: left;
+}
+
+.infoBasketball li,
+.infoFootball li {
+    width: 364px;
+    height: auto;
+    padding-bottom: 9px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    border-right: 1px solid #F4F4F4;
+}
+
+.infoFootball li {
+    width: 330px;
+    padding-left: 15px;
+    border-right: 0px;
+}
+
+.infoBasketball li:last-of-type {
+    padding-bottom: 0px;
+}
+
+.infoBasketball li a:hover,
+.infoFootball li a:hover {
+    color: #3696FF;
+}
+
+.infoBasketball li img,
+.infoFootball li img {
+    width: 16px;
+    height: auto;
+    margin-right: 6px;
+    vertical-align: sub;
+}
+
+#advertisement {
+    height: 610px;
+    background: #FFFFFF;
+}
+
+
+/*比赛列表*/
+
+.matchBox {
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.matchList {
+    width: 1000px;
+    height: auto;
+    background: #FFFFFF;
+}
+
+.myContent {
+    overflow: hidden;
+}
+
+.check li {
+    width: 90px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.check li img {
+    width: 16px;
+    height: auto;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.check li:hover {
+    color: #2E81FF;
+}
+
+.nowChecked {
+    color: #FFFFFF !important;
+    background: #3081FF;
+}
+
+.date {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #EAEAEA;
+}
+
+.date span {
+    margin-left: 6px;
+}
+
+.contenTab {
+    position: relative;
+}
+
+.listBox {
+    /*cursor: pointer;*/
+    overflow: hidden;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+
+/*.listBox:hover {
+	background: #E2EEFF;
+}*/
+
+.listBox>div {
+    float: left;
+}
+
+.download {
+    float: right !important;
+}
+
+.myList {
+    height: 50px;
+    overflow: hidden;
+}
+
+.myList>div {
+    height: 50px;
+    padding: 0 8px;
+    line-height: 50px;
+    float: left;
+}
+
+.myList img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin: 0 6px;
+}
+
+.team p {
+    display: inline-block;
+}
+
+.hot {
+    width: 12px !important;
+    height: 12px !important;
+    margin-top: 17px !important;
+}
+
+.download>div {
+    display: inline-block;
+}
+
+.download>div>a {
+    display: block;
+}
+
+.download>div>a>p {
+    width: 96px;
+    height: 30px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 9px;
+    background: #2E81FF;
+    border-radius: 20px;
+    margin-right: 8px;
+}
+
+.download>div>a>p:hover {
+    background: #005BE6;
+}
+
+.notBegin:hover {
+    background: #6B6B6B !important;
+}
+
+.notBegin {
+    background: #999999 !important;
+}
+
+.download>div>a>p>img {
+    width: 12px;
+    height: auto;
+    margin-right: 6px;
+}
+
+.downloadApp {
+    cursor: pointer;
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    border-bottom: 1px solid #383838;
+}
+
+.downloadApp a:hover {
+    color: #2E81FF;
+    border-bottom: 1px solid #2E81FF;
+}
+
+
+/*tv*/
+
+.tvList {
+    height: auto;
+    padding: 15px;
+}
+
+.tvList a {
+    width: 30%;
+    height: 80px;
+    display: inline-block;
+    margin-right: 4.3%;
+    margin-bottom: 3%;
+}
+
+.tvList a:nth-of-type(3) {
+    margin-right: 0 !important;
+}
+
+.listType {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #DBDBDB;
+}
+
+.listType img {
+    /*width: 133px;*/
+    height: 68px;
+    margin-top: 7px;
+}
+
+
+/*情报*/
+
+.information {
+    width: 220px;
+    height: auto;
+    margin-left: 25px;
+}
+
+
+/*竞彩情报*/
+
+.competitive,
+.wonderful_video {
+    width: 220px;
+    height: auto;
+    background: #FFFFFF;
+}
+
+.competitive>p,
+.wonderful_video>p {
+    color: #FFFFFF;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    background: #2E81FF;
+}
+
+.competitive a,
+.wonderful_videoList a {
+    display: block;
+}
+
+.intelligenceList {
+    padding: 5px;
+    overflow: hidden;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.intelligenceList:hover .intelligenceTitle {
+    color: #2E81FF;
+}
+
+.intelligenceList img {
+    width: 90px;
+    height: 50px;
+    float: left;
+    vertical-align: middle;
+}
+
+.intelligenceList div {
+    width: 113px;
+    float: left;
+    font-size: 12px;
+    margin-left: 3%;
+}
+
+.intelligenceList p {
+    width: 113px;
+    line-height: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.intelligenceList p:nth-of-type(2) {
+    color: #828282;
+}
+
+.moreInfo a {
+    width: 100%;
+    height: 30px;
+    color: #828282;
+    font-size: 12px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.moreInfo :hover {
+    color: #2E81FF;
+}
+
+
+/*精彩录像*/
+
+.wonderful_video {
+    /*margin-top: 20px;*/
+    overflow: hidden;
+}
+
+.competitive {
+    margin-top: 20px;
+}
+
+.wonderful_videoMsg {
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.wonderful_videoMsg:hover .msgSroce>div p {
+    color: #2E81FF;
+}
+
+.wonderful_videoMsg>p {
+    color: #828282;
+    font-size: 12px;
+    padding: 8px 10px;
+}
+
+.wonderful_videoMsg>p>span {
+    margin-left: 6px;
+}
+
+.msgSroce {
+    padding: 0 10px 8px 10px;
+    overflow: hidden;
+}
+
+.msgSroce>div {
+    float: left;
+    line-height: 30px;
+}
+
+.msgSroce>div:nth-of-type(1) p {
+    width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.msgSroce>div:nth-of-type(2) {
+    width: 80px;
+    text-align: left;
+    float: right;
+    margin-top: 15px;
+}
+
+.msgSroce img {
+    width: 20px;
+    height: auto;
+    margin-right: 4px;
+    vertical-align: text-bottom;
+}
+
+
+/*jintian*/
+
+.toToday {
+    width: 1000px;
+    height: 30px;
+    line-height: 30px;
+    background: #EAEAEA;
+    text-align: center;
+    z-index: 999;
+    display: none;
+    position: fixed;
+    top: 0;
+}
+
+.toToday span {
+    margin-left: 6px;
+}
+
+
+/*左边导航*/
+
+#leftNav {
+    width: 90px;
+    height: auto;
+    text-align: center;
+    position: fixed;
+    left: 18.2%;
+    top: 54.5%;
+}
+
+#leftNav ul li {
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    background: #FFFFFF;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+#leftNav ul li:hover {
+    color: #2E81FF;
+}
+
+#leftNav ul li:last-of-type {
+    border-bottom: 0;
+}
+
+#leftNav p {
+    width: 90px;
+    height: 30px;
+    cursor: pointer;
+    line-height: 30px;
+    margin-top: 20px;
+    background: #E2EEFF;
+}
+
+.leftNavNowActive {
+    color: #FFFFFF !important;
+    background: #2E81FF !important;
+}
+
+
+/*暂无比赛*/
+
+.noMatch {
+    width: 100%;
+    height: auto;
+    padding: 2% 0;
+    text-align: center;
+}
+
+.noMatch img {
+    width: 130px;
+    height: auto;
+}
+
+.noMatch p {
+    color: #828282;
+    margin-top: 5px;
+}
+
+.noMatch2 {
+    width: 130px;
+    height: auto;
+}
+
+.videoList>p {
+    color: rgb(111, 209, 255);
+    margin-top: 5px;
+}
+
+.videoCheck {
+    border-bottom: 1px solid #F4F4F4;
+}
+
+.videoCheck li {
+    margin: 0 9%;
+    padding: 4% 0;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.videoNowActive {
+    color: #2A91FF;
+    border-bottom: 1px solid #2A91FF;
+}
+
+@media screen and (max-width: 1920px) {
+    #leftNav {
+        left: 18.2%;
+    }
+}
+
+@media screen and (max-width: 1890px) {
+    #leftNav {
+        left: 17.5%;
+    }
+}
+
+@media screen and (max-width: 1840px) {
+    #leftNav {
+        left: 17%;
+    }
+}
+
+@media screen and (max-width: 1820px) {
+    #leftNav {
+        left: 16.5%;
+    }
+}
+
+@media screen and (max-width: 1780px) {
+    #leftNav {
+        left: 15%;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    #leftNav {
+        left: 14%;
+    }
+}
+
+@media screen and (max-width: 1660px) {
+    #leftNav {
+        left: 13.5%;
+    }
+}
+
+@media screen and (max-width: 1635px) {
+    #leftNav {
+        left: 12.5%;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    #leftNav {
+        left: 11.5%;
+    }
+}
+
+@media screen and (max-width: 1550px) {
+    #leftNav {
+        left: 10.5%;
+    }
+}
+
+@media screen and (max-width: 1510px) {
+    #leftNav {
+        left: 9.5%;
+    }
+}
+
+@media screen and (max-width: 1480px) {
+    #leftNav {
+        left: 8.5%;
+    }
+}
+
+@media screen and (max-width: 1445px) {
+    #leftNav {
+        left: 7.5%;
+    }
+}
+
+@media screen and (max-width: 1405px) {
+    #leftNav {
+        left: 6.5%;
+    }
+}
+
+@media screen and (max-width: 1380px) {
+    #leftNav {
+        left: 5.5%;
+    }
+}
+
+@media screen and (max-width: 1345px) {
+    #leftNav {
+        left: 4.5%;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    #leftNav {
+        left: 3.5%;
+    }
+}
+
+@media screen and (max-width: 1290px) {
+    #leftNav {
+        left: 2.5%;
+    }
+}
+
+@media screen and (max-width: 1290px) {
+    #leftNav {
+        left: 1.5%;
+    }
+}
+
+@media screen and (max-width: 1235px) {
+    #leftNav {
+        left: 0.5%;
+    }
+}
+
+.links {
+    margin-bottom: 12px;
+}
+
+.links a {
+    padding: 5px;
+}
+
+#divAdLeft {
+    width: 120px;
+    line-height: 30px;
+    position: fixed;
+    overflow: hidden;
+    left: 0px !important;
+}
+
+#divAdRight {
+    width: 120px;
+    line-height: 30px;
+    position: fixed;
+    overflow: hidden;
+    right: 0px !important;
+}
+
+#divAdLeft img,
+#divAdRight img {
+    width: 120px
+}

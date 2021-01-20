@@ -1,0 +1,87 @@
+.box2 {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.Teamtitle {
+    max-width: 500px;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    margin: 0 auto;
+    display: none;
+}
+
+.Teamtitle p {
+    font-weight: bold;
+    background: #FFFFFF !important;
+    float: left;
+}
+
+.team1,
+.team2 {
+    width: 192px;
+    padding: 0 22px;
+}
+
+.team1 {
+    text-align: right;
+}
+
+.team2 {
+    text-align: left;
+}
+
+.Teamtitle p img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+.Teamtitle p:nth-of-type(2) {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.outs {
+    width: 100%;
+}
+
+.outsList {
+    height: 40px;
+    max-width: 505px;
+    line-height: 30px;
+    overflow: hidden;
+    margin: 6px auto;
+}
+
+.outsList>p,
+.outsList>img {
+    float: left;
+}
+
+.outsList>p {
+    width: 217px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+}
+
+.outsList>img {
+    width: 22px;
+    height: auto;
+    margin-top: 4px;
+    vertical-align: middle;
+}
+
+.outsList p:first-of-type {
+    text-align: right;
+}
+
+.border_tab {
+    width: 2px;
+    height: 15px;
+    margin: 0 auto;
+    background: #888888;
+}
