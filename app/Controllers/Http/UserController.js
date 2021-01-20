@@ -7,8 +7,8 @@ const { validate } = use("Validator");
 class UserController {
     async login({ auth, request, response }) {
         const rules = {
-            username: "required|min:4",
-            password: "required|min:6",
+            username: "required",
+            password: "required",
         };
 
         const { username, password } = request.all()
@@ -59,6 +59,21 @@ class UserController {
 
         await auth.revokeTokens([apiToken], true)
 
+        return Response(response, {});
+    }
+
+    async changePassword({ auth, request, response }) {
+        const authUser = await auth.getUser()
+
+        const {
+            newPassword
+        } = request.all()
+
+        const user = await User.find({ id: authUser.id })
+
+        user.password = newPassword
+
+        await user.save()
         return Response(response, {});
     }
 }

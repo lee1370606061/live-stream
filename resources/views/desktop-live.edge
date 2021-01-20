@@ -1,0 +1,49 @@
+@include('layouts.header')
+
+<div class="box live">
+  <div>
+      <div class="msg" style='background-image:url(/desktop/images/lanqiu.png); '>
+          <p class="state"><img src="/desktop/picture/shiping.png" />直播间</p>
+          <ul status="2" score_id="346278" match="1">
+            <li class="teamName nameOne">{{data.teamOne.name}}</li>
+            <li><img class="imgOne" src="{{data.teamOne.image}}"></li>
+            <li class="score home">-</li>
+            <li class="timer">
+              <p>{{data.matchType}}</p>
+              <p class="t">{{data.videoDetails.details.time}}</p>
+              <p class="_t" style="display: none">{{data.videoDetails.details.times}}</p>
+            </li>
+            <li class="score visit">-</li>
+            <li><img class="imgTwo" src="{{data.teamTwo.image}}"></li>
+            <li class="teamName nameTwo">{{data.teamTwo.name}}</li>
+          </ul>
+      </div>
+      <div class="channel">
+          <div class="channelBox">
+              <!-- 聊天室 -->
+              <iframe id="pp" src="{{data.videoDetails.video.src}}" width="100%" height="454px" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no"></iframe>
+              <ul class="checkChannel">
+                  <li>
+                      <p>直播信号:</p>
+                  </li>
+                  <li><a data-url="{{data.videoDetails.video.src}}" class="toLive nl picked">高清直播</a></li>
+              </ul>
+              <!-- 聊天室结束 -->
+          </div>
+      </div>
+  </div>
+  <!--广告栏-->
+  <div id="advertisement">
+    <a href='' target=_blank><img src='{{liveDetails.rightPromoteSrc}}' border=0 width='220' height='100%' alt=''></a>
+  </div>
+  
+</div>
+<div style="width:1000px; margin:0 auto;margin-top:16px;">
+    <a href="" target="_parent"><img src="{{liveDetails.bottomPromoteSrc}}" border="0" width="100%" height="auto"></ a>
+</div>
+<div id="returnTop" onclick="returnTop()"><img src="/desktop/picture/top.png" /></div>
+<div id="err"><img src="/desktop/picture/errmsg.png">
+  <p></p>
+</div>
+
+@include('layouts.footer')

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <title>【JRS看球网】JRS直播|低调看直播|NBA直播|足球直播</title>
-    <meta name="keywords" content="JRS看球,JRS直播,低调看直播,NBA直播,CBA直播,足球直播,英超直播,西甲直播,意甲直播,德甲直播,法甲直播,中超直播,欧冠直播,亚冠直播,世界杯直播,奥运会直播">
+    <meta name="keywords"
+        content="JRS看球,JRS直播,低调看直播,NBA直播,CBA直播,足球直播,英超直播,西甲直播,意甲直播,德甲直播,法甲直播,中超直播,欧冠直播,亚冠直播,世界杯直播,奥运会直播">
     <meta name="description" content="【JRS看球网】全程提供NBA直播,五大联赛直播等全球体育赛事免费高清视频直播信号，看比赛上JRS看球网！jrskq.com">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -28,6 +29,7 @@
                     <p>直播</p>
                 </li>
             </a>
+            <!--
             <a href="/video/nba/">
                 <li k="lx">
                     <p>录像</p>
@@ -38,6 +40,7 @@
                     <p>资讯</p>
                 </li>
             </a>
+            -->
         </ul>
     </header>
 
@@ -51,12 +54,14 @@
                 $(this).children('p').addClass("active");
             }
         })
+
     </script>
     <script>
         function closed() {
             $('#toApp').hide()
             $('#mengban').hide()
         }
+
     </script>
     <link rel="stylesheet" type="text/css" href="/mobile/css/index.css" />
     <link rel="stylesheet" href="/mobile/css/swiper.min.css" />
@@ -65,9 +70,10 @@
             <div class="swiper-container swiper-container-h">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"> <a href="http://jrskq.com/">
-          <img src="http://www.feisuzhiboba.com/d/file/p/2019/12-09/f1e00f0b3553e90cf889192505106cd5.jpg" style="width: 100%;height: 100%;" />
-          <div class="tips">   </div>
-           </a> </div>
+                            <img src="http://www.feisuzhiboba.com/d/file/p/2019/12-09/f1e00f0b3553e90cf889192505106cd5.jpg"
+                                style="width: 100%;height: 100%;" />
+                            <div class="tips"> </div>
+                        </a> </div>
                 </div>
                 <!-- Add Pagination -->
                 <div class="swiper-pagination swiper-pagination-h" style="left: 40%;color: #FFFFFF;"></div>
@@ -84,1291 +90,142 @@
             </ul>
         </div>
         <div class="catalog all" id="checked-qb" style="display: block;">
-
-
-
             <div class="match todayMatch">
-                <p class="date today">01月19日<span>今天</span></p>
+                <p class="date today">{{data.todayTimes.month}}月{{data.todayTimes.day}}日<span>今天</span></p>
                 <div class="noMatch" style=" display:none">
                     <p>当日暂无比赛</p>
                 </div>
-                <a s="2021-01-19 00:00" key="" k="" hot="1" status="0" href="/live/82701.html">
+                @each(today in data.today)
+                    @if(today.isStream)
+                    <a s="{{today.attr.s}}" key="{{today.attr.key}}" k="{{today.attr.key}}" hot="{{today.attr.hot}}" status="{{today.attr.status}}" href="{{ route('live', { type: 'today', id: today.id }) }}">
+                    @else
+                    <a s="{{today.attr.s}}" key="{{today.attr.key}}" k="{{today.attr.key}}" hot="{{today.attr.hot}}" status="{{today.attr.status}}">
+                    @endif
                     <div class="list">
                         <div class="timer">
-                            <p>00:00</p>
+                            <p>{{today.timer}}</p>
                         </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2020/04-09/a6637d239c18dfbb5bdaced0de50269c.jpg" />
-                            <p>精彩赛事</p>
-                        </div>
-                        <div class="score">
-                            <p>体育节目</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">直播中</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2020/04-09/856b242119aafd46fdb7f0cd05bb4341.jpg" />
-                            <p>24小时轮播</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 09:05" key="" k="" hot="" status="0" href="/live/96292.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>09:05</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>圣路易蓝调</p>
+                        <div class="teamOne"> <img
+                                src="{{today.teamOne.image}}" />
+                            <p>{{today.teamOne.name}}</p>
                         </div>
                         <div class="score">
-                            <p>NHL</p>
+                            <p>{{today.matchType}}</p>
                             <p class="score_num"> - </p>
-                            <p class="state">直播中</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>圣荷西鲨鱼</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 09:05" key="" k="" hot="" status="0" href="/live/96267.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>09:05</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>纳什维尔掠夺者</p>
-                        </div>
-                        <div class="score">
-                            <p>NHL</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">直播中</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>卡罗莱纳飓风</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 10:05" key="" k="" hot="" status="0" href="/live/96270.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>10:05</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>卡尔加里火焰</p>
-                        </div>
-                        <div class="score">
-                            <p>NHL</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">直播中</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>温哥华加拿大人</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 10:05" key="" k="" hot="" status="0" href="/live/96273.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>10:05</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>安纳海姆巨鸭</p>
-                        </div>
-                        <div class="score">
-                            <p>NHL</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">直播中</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>明尼苏达野人</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 10:05" key="" k="" hot="" status="0" href="/live/96276.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>10:05</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>爱民顿油人</p>
-                        </div>
-                        <div class="score">
-                            <p>NHL</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">直播中</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>蒙特利尔加拿大人</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 11:00" key="1" k="1" hot="1" status="0" href="/live/96020.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>11:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/e6a2d117481f8d68c2ae0bee73a5cfbc.jpg" />
-                            <p>勇士</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">直播中</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/080c19ddf224d2cde19eb0cbb253db4c.jpg" />
-                            <p>湖人</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 11:00" key="1" k="1" hot="1" status="0" href="/live/97576.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>11:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-01/fbac6240d9d852acc0911d1716ee0e9d.jpg" />
-                            <p>吉林</p>
-                        </div>
-                        <div class="score">
-                            <p>CBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">直播中</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-12/f7e9b9ed29c45e37467cbeb067c09126.jpg" />
-                            <p>广东</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 11:00" key="2" k="2" hot="" status="0" href="/live/97579.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>11:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/05-15/8f7260d318dc8cff7b9b8f834b9c1e25.jpg" />
-                            <p>莱昂</p>
-                        </div>
-                        <div class="score">
-                            <p>墨西哥超</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">直播中</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/10-19/8ac0d62e632690491b01942fb058a20e.jpg" />
-                            <p>帕丘卡</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 11:05" key="2" k="2" hot="" status="0" href="/live/96279.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>11:05</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>维加斯黄金骑士</p>
-                        </div>
-                        <div class="score">
-                            <p>NHL</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">直播中</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>亚利桑那州土狼</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 15:00" key="1" k="1" hot="1" status="0" href="/live/97718.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>15:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/07-17/ddf3e58f3df2f8c872c503b97c254681.jpg" />
-                            <p>青岛</p>
-                        </div>
-                        <div class="score">
-                            <p>CBA</p>
-                            <p class="score_num"> - </p>
+                            @if(today.isStream)
+                               <p class="state">直播中</p>
+                            @else
                             <p class="state">未开始</p>
+                            @endif
                         </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-12/ac1ea3745757771b7a2102090cac0944.jpg" />
-                            <p>深圳</p>
+                        <div class="teamTwo"> <img
+                                src="{{today.teamTwo.image}}" />
+                            <p>{{today.teamTwo.name}}</p>
                         </div>
+                        @if(today.isStream)
                         <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
+                        @else
+                        <div class="imgzhibo"> <img src="/mobile/picture/video1.png" /> </div>
+                        @endif
+                       
                     </div>
                 </a>
-                <a s="2021-01-19 15:30" key="1" k="1" hot="1" status="0" href="/live/97724.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>15:30</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/07-17/cfd70087ef67bef0e9f4689a37ab3850.jpg" />
-                            <p>天津</p>
-                        </div>
-                        <div class="score">
-                            <p>CBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/07-22/a8998640b10fc287267ffeb79a56ae4d.jpg" />
-                            <p>福建</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 16:05" key="2" k="2" hot="" status="0" href="/live/91275.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>16:05</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-25/19282a930213f22661474651d6800ad0.jpg" />
-                            <p>中央海岸水手</p>
-                        </div>
-                        <div class="score">
-                            <p>澳超</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-26/c62e602cc3b421d231b9fa27dbbf711b.jpg" />
-                            <p>西悉尼流浪者</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 17:00" key="2" k="2" hot="" status="0" href="/live/96494.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>17:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/06-18/b35f816996732014605e8e336aedc9a3.jpg" />
-                            <p>RW</p>
-                        </div>
-                        <div class="score">
-                            <p>电子竞技</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/08-11/9e4a5bbb39bb68dfc24ee5bf7fd97c9d.jpg" />
-                            <p>FPX</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 18:00" key="1" k="1" hot="" status="0" href="/live/97732.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>18:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/10-06/e0a7c72f5ad4969b1eb4c1691d2b0e60.jpg" />
-                            <p>全州宙斯盾</p>
-                        </div>
-                        <div class="score">
-                            <p>韩国篮甲</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>昌原猎隼</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 19:00" key="1" k="1" hot="" status="0" href="/live/96497.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>19:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/06-18/b159ba03e6fdf4b9d101e42e95cdbc37.jpg" />
-                            <p>EDG</p>
-                        </div>
-                        <div class="score">
-                            <p>电子竞技</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/06-18/6070822c24fd44076ca23566c84d9c26.jpg" />
-                            <p>LGD</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 19:35" key="1" k="1" hot="1" status="0" href="/live/97706.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>19:35</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/10-10/f2bf16293932c4e4d9e6de8704fb08e1.jpg" />
-                            <p>广厦</p>
-                        </div>
-                        <div class="score">
-                            <p>CBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-14/7e3f5f3a72a6be075978d8d5dc23dd42.jpg" />
-                            <p>新疆</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 20:00" key="1" k="1" hot="1" status="0" href="/live/97708.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>20:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-01/1c55bfa497643ca7b330435147fa1b83.jpg" />
-                            <p>四川</p>
-                        </div>
-                        <div class="score">
-                            <p>CBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/10-10/7277b522dae01b4a261aecc8103c5126.jpg" />
-                            <p>北控</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 21:30" key="2" k="2" hot="" status="0" href="/live/97723.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>21:30</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>安托法加斯塔</p>
-                        </div>
-                        <div class="score">
-                            <p>智利甲</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>伊库伊奎</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-19 23:00" key="2" k="2" hot="1" status="0" href="/live/57313.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>23:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-23/27f445490e7ae4ff68a3670c01bb8c02.jpg" />
-                            <p>勒阿弗尔</p>
-                        </div>
-                        <div class="score">
-                            <p>法国杯</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-25/f0d4d3f98fde511f50f90b71063b2a8c.jpg" />
-                            <p>巴黎FC</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
+                @endeach  
             </div>
 
 
 
             <div class="match tomorrowMatch">
-                <p class="date tomorrow">01月20日<span>明天</span></p>
+                <p class="date tomorrow">{{data.tomorrowTimes.month}}月{{data.tomorrowTimes.day}}日<span>明天</span></p>
                 <div class="noMatch" style=" display:none">
                     <p>当日暂无比赛</p>
                 </div>
-                <a s="2021-01-20 01:05" key="1" k="1" hot="" status="0" href="/live/97370.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>01:05</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>水牛城</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA男篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>肯特州立大学</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
+                @each(tomorrow in data.tomorrow)
+                @if(tomorrow.isStream)
+                <a s="{{tomorrow.attr.s}}" key="{{tomorrow.attr.key}}" k="{{tomorrow.attr.key}}" hot="{{tomorrow.attr.hot}}" status="{{tomorrow.attr.status}}" href="{{ route('live', { type: 'tomorrow', id: tomorrow.id }) }}">
+                @else
+                <a s="{{tomorrow.attr.s}}" key="{{tomorrow.attr.key}}" k="{{tomorrow.attr.key}}" hot="{{tomorrow.attr.hot}}" status="{{tomorrow.attr.status}}">
+                @endif
+                <div class="list">
+                    <div class="timer">
+                        <p>{{tomorrow.timer}}</p>
                     </div>
-                </a>
-                <a s="2021-01-20 01:05" key="1" k="1" hot="" status="0" href="/live/97373.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>01:05</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>俄亥俄</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA男篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>北伊利诺伊大学</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
+                    <div class="teamOne"> <img
+                            src="{{tomorrow.teamOne.image}}" />
+                        <p>{{tomorrow.teamOne.name}}</p>
                     </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/91303.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>阿美恩斯</p>
-                        </div>
-                        <div class="score">
-                            <p>法乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-23/27f445490e7ae4ff68a3670c01bb8c02.jpg" />
-                            <p>勒阿弗尔</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
+                    <div class="score">
+                        <p>{{tomorrow.matchType}}</p>
+                        <p class="score_num"> - </p>
+                        @if(tomorrow.isStream)
+                           <p class="state">直播中</p>
+                        @else
+                        <p class="state">未开始</p>
+                        @endif
                     </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/91300.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>图鲁兹</p>
-                        </div>
-                        <div class="score">
-                            <p>法乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>格勒诺布</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
+                    <div class="teamTwo"> <img
+                            src="{{tomorrow.teamTwo.image}}" />
+                        <p>{{tomorrow.teamTwo.name}}</p>
                     </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/91297.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/10-18/f6b19eac4a6fa572c3b3fae85821f04e.gif" />
-                            <p>尚布利</p>
-                        </div>
-                        <div class="score">
-                            <p>法乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-23/9ec81ea81fb2125f057b5bfa1301503d.jpg" />
-                            <p>尼奥尔</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/91294.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>克莱蒙特</p>
-                        </div>
-                        <div class="score">
-                            <p>法乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>敦刻尔克</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/91291.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-23/7e943ae43bd2fa2f6e00124bec184538.jpg" />
-                            <p>特鲁瓦</p>
-                        </div>
-                        <div class="score">
-                            <p>法乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-23/3020d56ebe5001e5e6f514108b903777.jpg" />
-                            <p>索肖</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/91288.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-23/09c748ae2de1f8c112c07ebf8abbb887.jpg" />
-                            <p>阿雅克肖</p>
-                        </div>
-                        <div class="score">
-                            <p>法乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-17/be6bcd2c9dbd14b6aa811b6561b7e008.jpg" />
-                            <p>卡昂</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/91285.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-23/8af93c07ae35dba7fddeb1234e1acb24.jpg" />
-                            <p>欧塞尔</p>
-                        </div>
-                        <div class="score">
-                            <p>法乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>沙特鲁</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/91282.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/10-28/2b09736c3f5a567e024d3f8497708d80.jpg" />
-                            <p>瓦朗谢讷</p>
-                        </div>
-                        <div class="score">
-                            <p>法乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2020/02-07/b65ed8e4b0f17372690c3c496a3cebf3.jpg" />
-                            <p>FC 巴黎</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/91280.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-11/208e141879124cc9835321b5b86cab79.jpg" />
-                            <p>罗德兹</p>
-                        </div>
-                        <div class="score">
-                            <p>法乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2020/01-16/56c8f77ca76428a983523f213a5968b1.jpg" />
-                            <p>波城</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/91279.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-17/ea0eccb5f7de5c0dde587c535294127f.jpg" />
-                            <p>甘冈</p>
-                        </div>
-                        <div class="score">
-                            <p>法乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-23/71e47b1d15b16cb953534697f1cea4f1.jpg" />
-                            <p>南锡</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 02:00" key="1" k="1" hot="" status="0" href="/live/97157.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>理姆斯</p>
-                        </div>
-                        <div class="score">
-                            <p>法国篮甲</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>勒瓦卢瓦大都会92</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 02:00" key="2" k="2" hot="" status="0" href="/live/97785.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>02:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>维琴察</p>
-                        </div>
-                        <div class="score">
-                            <p>意乙</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-14/5c43501051ff94ef7fdd6aef7d08685a.jpg" />
-                            <p>切沃</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 03:45" key="1" k="1" hot="" status="0" href="/live/97788.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>03:45</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>艾斯维尔 里昂 维勒班</p>
-                        </div>
-                        <div class="score">
-                            <p>欧篮冠联</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/09-18/ad1158beb172a7a49132185ffbf40d7b.jpg" />
-                            <p>奥林匹亚科斯</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 04:00" key="2" k="2" hot="" status="0" href="/live/97803.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>04:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>华奇巴托</p>
-                        </div>
-                        <div class="score">
-                            <p>智利甲</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/05-20/63dc576a4f9b967c51e30019525b348b.jpg" />
-                            <p>西班牙联合</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 06:00" key="1" k="1" hot="" status="0" href="/live/97378.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>06:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>戴顿大学</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA女篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>圣里奥大学</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 06:00" key="1" k="1" hot="" status="0" href="/live/97375.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>06:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>莫瑞州立大学</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA女篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>贝尔蒙特</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 06:15" key="2" k="2" hot="" status="0" href="/live/97813.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>06:15</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-23/b472a08b6fd65dc02ca126d7e3aea9e6.jpg" />
-                            <p>天主大学</p>
-                        </div>
-                        <div class="score">
-                            <p>智利甲</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2020/03-14/bb7d889c8843f7284eec7b4d245961a1.jpg" />
-                            <p>维尼亚德马埃弗顿</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 07:00" key="1" k="1" hot="" status="0" href="/live/97381.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>07:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>爱德华兹维尔大学</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA女篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>摩尔海德州立</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 07:00" key="1" k="1" hot="" status="0" href="/live/97384.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>07:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>高点大学</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA男篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>朗伍德大学</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 07:00" key="1" k="1" hot="" status="0" href="/live/97387.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>07:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>坎贝尔大学</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA男篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>汉普顿大学</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 08:00" key="1" k="1" hot="" status="0" href="/live/97393.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>密歇根州中部大学</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA男篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>托雷多</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 08:00" key="1" k="1" hot="" status="0" href="/live/97390.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>阿克伦</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA男篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>鲍林格林州立大学</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 08:00" key="1" k="1" hot="" status="0" href="/live/97395.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>东南密苏里州立</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA男篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>田纳西州立</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 08:00" key="1" k="1" hot="" status="0" href="/live/97398.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>南加大州大学</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA男篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>查尔斯顿南方大学</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 08:00" key="1" k="1" hot="" status="0" href="/live/97396.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>阿什维尔大学</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA男篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>加德纳韦伯</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 08:30" key="1" k="1" hot="" status="0" href="/live/97400.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:30</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>奥克拉荷马大学</p>
-                        </div>
-                        <div class="score">
-                            <p>NCAA女篮</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>爱荷华州立</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 08:30" key="2" k="2" hot="" status="0" href="/live/97806.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:30</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>希金斯</p>
-                        </div>
-                        <div class="score">
-                            <p>智利甲</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/05-08/5a2ab3b22eef51f21a72191d02e24f22.jpg" />
-                            <p>康塞普森</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 08:40" key="2" k="2" hot="" status="0" href="/live/97808.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:40</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>布卡拉曼格</p>
-                        </div>
-                        <div class="score">
-                            <p>哥伦比亚甲</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>博亚卡捷高</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 10:00" key="1" k="1" hot="" status="0" href="/live/96509.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>10:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/07-03/81351551b049f5ee942207ecdd0263fb.jpg" />
-                            <p>鹈鹕</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>爵士（国语）</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 10:00" key="1" k="1" hot="" status="0" href="/live/96506.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>10:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/bb8ec569977169a357bf0608d47d58a9.jpg" />
-                            <p>雷霆</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>掘金（国语）</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 17:00" key="1" k="1" hot="" status="0" href="/live/96516.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>17:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/06-18/2cf6fbe01f60e0cc4d662f96a6f8d72a.jpg" />
-                            <p>IG</p>
-                        </div>
-                        <div class="score">
-                            <p>电子竞技</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2020/04-06/c5e51787fe21b57bebe390c6d0eb462f.jpg" />
-                            <p>ES</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 18:20" key="2" k="2" hot="" status="0" href="/live/88990.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>18:20</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/04-27/f7662e74efabc592ad029d794c003226.jpg" />
-                            <p>珀斯光荣</p>
-                        </div>
-                        <div class="score">
-                            <p>澳超</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/10-12/0ebde67a6fd114c9cb39147c82a2381b.jpg" />
-                            <p>昆士兰狮吼</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-20 19:00" key="2" k="2" hot="" status="0" href="/live/96518.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>19:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/06-18/2ad0764a950938f5f749846de8ac5771.jpg" />
-                            <p>SN</p>
-                        </div>
-                        <div class="score">
-                            <p>电子竞技</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>RA</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
+                    @if(tomorrow.isStream)
+                    <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
+                    @else
+                    <div class="imgzhibo"> <img src="/mobile/picture/video1.png" /> </div>
+                    @endif
+                   
+                </div>
+            </a>
+            @endeach  
             </div>
 
 
 
             <div class="match afterTomorrowMatch">
-                <p class="date afterTomorrow">01月21日<span>后天</span></p>
+                <p class="date afterTomorrow">{{data.afterTomorrowTimes.month}}月{{data.afterTomorrowTimes.day}}日<span>后天</span></p>
                 <div class="noMatch" style=" display:none">
                     <p>当日暂无比赛</p>
                 </div>
-                <a s="2021-01-21 08:00" key="1" k="1" hot="" status="0" href="/live/96558.html">
+                @each(afterTomorrow in data.afterTomorrow)
+                    @if(afterTomorrow.isStream)
+                    <a s="{{afterTomorrow.attr.s}}" key="{{afterTomorrow.attr.key}}" k="{{afterTomorrow.attr.key}}" hot="{{afterTomorrow.attr.hot}}" status="{{afterTomorrow.attr.status}}" href="{{ route('live', { type: 'afterTomorrow', id: afterTomorrow.id }) }}">
+                    @else
+                    <a s="{{afterTomorrow.attr.s}}" key="{{afterTomorrow.attr.key}}" k="{{afterTomorrow.attr.key}}" hot="{{afterTomorrow.attr.hot}}" status="{{afterTomorrow.attr.status}}">
+                    @endif
                     <div class="list">
                         <div class="timer">
-                            <p>08:00</p>
+                            <p>{{afterTomorrow.timer}}</p>
                         </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-08/0500e8c2587849a923f52632c583e843.jpg" />
-                            <p>篮网</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>骑士（国语）</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-21 08:00" key="1" k="1" hot="" status="0" href="/live/96555.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/5dde4a9af2fa7bcdc76faafd25f4120c.jpg" />
-                            <p>独行侠</p>
+                        <div class="teamOne"> <img
+                                src="{{afterTomorrow.teamOne.image}}" />
+                            <p>{{afterTomorrow.teamOne.name}}</p>
                         </div>
                         <div class="score">
-                            <p>NBA</p>
+                            <p>{{afterTomorrow.matchType}}</p>
                             <p class="score_num"> - </p>
+                            @if(afterTomorrow.isStream)
+                               <p class="state">直播中</p>
+                            @else
                             <p class="state">未开始</p>
+                            @endif
                         </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>步行者（国语）</p>
+                        <div class="teamTwo"> <img
+                                src="{{afterTomorrow.teamTwo.image}}" />
+                            <p>{{afterTomorrow.teamTwo.name}}</p>
                         </div>
+                        @if(afterTomorrow.isStream)
                         <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
+                        @else
+                        <div class="imgzhibo"> <img src="/mobile/picture/video1.png" /> </div>
+                        @endif
+                       
                     </div>
                 </a>
-                <a s="2021-01-21 08:30" key="1" k="1" hot="" status="0" href="/live/96564.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:30</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/84007df1c3f127434f1b68289439d5a3.jpg" />
-                            <p>活塞</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>老鹰（国语）</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-21 08:30" key="1" k="1" hot="" status="0" href="/live/96561.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>08:30</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/0acc815903bdc2dae1a5c88f35efbe3d.jpg" />
-                            <p>热火</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>猛龙（国语）</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-21 09:00" key="1" k="1" hot="" status="0" href="/live/96567.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>09:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/f6bd6300fbd22689a1bf20f58c1c871b.jpg" />
-                            <p>魔术</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>森林狼（国语）</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-21 10:30" key="1" k="1" hot="" status="0" href="/live/96542.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>10:30</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/46a1ebb9f07031d0da577c0e4b31486d.jpg" />
-                            <p>太阳</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>火箭（国语）</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-21 11:00" key="1" k="1" hot="" status="0" href="/live/96548.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>11:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/223cfac3985dceef44ae8d350fd28fa1.jpg" />
-                            <p>国王</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>快船（国语）</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-21 11:00" key="1" k="1" hot="" status="0" href="/live/96551.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>11:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/27c9ae236a0d90c611d17a5ad539d5e3.jpg" />
-                            <p>马刺</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>勇士（国语）</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-21 11:00" key="1" k="1" hot="" status="0" href="/live/96545.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>11:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/11-07/254b86797697cc35fc9ad5757b87c6b1.jpg" />
-                            <p>灰熊</p>
-                        </div>
-                        <div class="score">
-                            <p>NBA</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>开拓者（国语）</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-21 17:00" key="1" k="1" hot="" status="0" href="/live/96563.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>17:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/mobile/img/nologo.png" />
-                            <p>TT</p>
-                        </div>
-                        <div class="score">
-                            <p>电子竞技</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/06-18/f48cf27cfc91eee936c6bb9f7d8f40d1.jpg" />
-                            <p>WE</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
-                <a s="2021-01-21 19:00" key="1" k="1" hot="" status="0" href="/live/96566.html">
-                    <div class="list">
-                        <div class="timer">
-                            <p>19:00</p>
-                        </div>
-                        <div class="teamOne"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/06-18/a6fa90b2dc0c1465a243c676a399f869.jpg" />
-                            <p>OMG</p>
-                        </div>
-                        <div class="score">
-                            <p>电子竞技</p>
-                            <p class="score_num"> - </p>
-                            <p class="state">未开始</p>
-                        </div>
-                        <div class="teamTwo"> <img src="http://www.feisuzhiboba.com/d/file/p/2019/06-18/3a1eed06e7513832c623e0f8287ab91d.jpg" />
-                            <p>RNG</p>
-                        </div>
-                        <div class="imgzhibo"> <img src="/mobile/picture/video2.png" /> </div>
-                    </div>
-                </a>
+                @endeach  
             </div>
         </div>
         <div id="toToday"> <a href="#header">
-    <button>回到今天</button>
-    </a> </div>
+                <button>回到今天</button>
+            </a> </div>
         <div id="tabHeader">
             <p class="date"> <span> </span></p>
         </div>
@@ -1387,8 +244,8 @@
             $('.app').hide()
             $('.company').css('margin-bottom', '0')
         }
+
     </script>
-    <script type="text/javascript" src="/mobile/js/19671713.js"></script>
     <script type="text/javascript" src="/mobile/js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="/mobile/js/index.js"></script>
     <script type="text/javascript" src="/mobile/js/anchor.js"></script>
@@ -1524,6 +381,7 @@
                 $(this).children('.list').css('font-weight', 'bold')
             }
         })
+
     </script>
     <script>
         function AutoScroll(obj) {
@@ -1538,6 +396,7 @@
         $(document).ready(function() {
             setInterval('AutoScroll("#handle")', 3000);
         });
+
     </script>
     <!-- Initialize Swiper -->
     <script>
@@ -1550,8 +409,8 @@
             autoplay: 3000,
             autoplayDisableOnInteraction: false,
             loop: true
-
         });
+
     </script>
 </body>
 

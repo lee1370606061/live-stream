@@ -5,6 +5,7 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Live = use('App/Models/Live')
+const Home = use('App/Models/Home')
 const Response = use("App/Helpers/Response");
 const Helpers = use('Helpers')
 const data = require(`${Helpers.appRoot()}/data.json`)
@@ -23,19 +24,33 @@ class LiveController {
      * @param {Response} ctx.response
      * @param {View} ctx.view
      */
-    async index({ request, response, view }) {
+    async index({ params, request, response, view }) {
+
         const headers = request.headers()
-        const live = await Home.find({ id: 1 })
+        const live = await Live.find({ id: 1 })
+        const home = await Home.find({ id: 1 })
 
         const liveDetails = {
             bottomPromoteSrc: live.bottom_promote_src,
             rightPromoteSrc: live.right_promote_src
         }
 
+        const homeDetails = {
+            logoSrc: home.logo_src,
+            promoteLeftSrc: home.promote_left_src,
+            promoteRightSrc: home.promote_right_src,
+            bottomProtocol: home.bottom_protocol
+        }
+
+        let result = {}
+        for (const iterator of data[params.type]) {
+            if (iterator.id == params.id) result = await iterator
+        }
+        console.log(result)
         if (/iphone|ipod|ipad|ipad|Android|nokia|blackberry|webos|webos|webmate|bada|lg|ucweb|skyfire|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|wap|mobile/i.test(headers['user-agent'])) {
-            return view.render('mobile', { data: data, liveDetails: liveDetails })
+            return view.render('mobile-live', { data: result, liveDetails: liveDetails, homeDetails: homeDetails })
         } else {
-            return view.render('desktop', { data: data, liveDetails: liveDetails })
+            return view.render('desktop-live', { data: result, liveDetails: liveDetails, homeDetails: homeDetails })
         }
     }
 
@@ -64,12 +79,12 @@ class LiveController {
             rightPromoteSrc
         } = request.all()
 
-        const home = await Home.findOrCreate({ id: 1 })
+        const live = await Live.findOrCreate({ id: 1 })
 
-        home.bottom_promote_src = bottomPromoteSrc
-        home.right_promote_src = rightPromoteSrc
+        live.bottom_promote_src = bottomPromoteSrc
+        live.right_promote_src = rightPromoteSrc
 
-        await home.save()
+        await live.save()
 
         return Response(response, {})
     }
@@ -84,16 +99,15 @@ class LiveController {
      * @param {View} ctx.view
      */
     async show({ params, request, response, view }) {
-        const home = await Home.find({ id: 1 })
 
-        const homeDetails = {
-            logoSrc: home.logo_src,
-            promoteLeftSrc: home.promote_left_src,
-            promoteRightSrc: home.promote_right_src,
-            bottomProtocol: home.bottom_protocol
+        const live = await Live.find({ id: 1 })
+
+        const liveDetails = {
+            bottomPromoteSrc: live.bottom_promote_src,
+            rightPromoteSrc: live.right_promote_src
         }
 
-        return Response(response, { data: homeDetails })
+        return Response(response, { data: liveDetails })
     }
 
     /**

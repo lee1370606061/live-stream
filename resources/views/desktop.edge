@@ -18,9 +18,8 @@
         </ul>
         <div class="myContent" id="checked-qb" style="display: block;">
             <div class="toToday"><span></span></div>
-
             <div class="todayMatch match">
-                <p class="date today">01月19日<span>今天</span></p>
+                <p class="date today">{{data.todayTimes.month}}月{{data.todayTimes.day}}日<span>今天</span></p>
                 <div class="noMatch" style=" display:none">
                     <p>当日暂无比赛</p>
                 </div>
@@ -31,12 +30,13 @@
                         <div class="timer">{{today.timer}}</div>
                             <div class="matchType">{{{today.matchType}}}</div>
                             <div class="team">
-                                 {{{today.team}}}
+                                <p>{{today.teamOne.name}}<img src="{{today.teamOne.image}}"></p>
+                                <p class="score">{{today.score}}</p>
+                                <p><img src="{{today.teamTwo.image}}">{{today.teamTwo.name}}</p>
                             </div>
                             @if(today.hot)
                               <img class="hot" src="/desktop/picture/remen.png">
                             @endif
-                           
                         </div>
                         <div class="download">
                             <div class="status">
@@ -57,7 +57,7 @@
             </div>
 
             <div class="tomorrowMatch match">
-                <p class="date tomorrow">01月20日<span>明天</span></p>
+                <p class="date tomorrow">{{data.tomorrowTimes.month}}月{{data.tomorrowTimes.day}}日<span>明天</span></p>
                 <div class="noMatch" style=" display:none">
                     <p>当日暂无比赛</p>
                 </div>
@@ -68,12 +68,13 @@
                         <div class="timer">{{tomorrow.timer}}</div>
                             <div class="matchType">{{{tomorrow.matchType}}}</div>
                             <div class="team">
-                                 {{{tomorrow.team}}}
+                                <p>{{tomorrow.teamOne.name}}<img src="{{tomorrow.teamOne.image}}"></p>
+                                <p class="score">{{tomorrow.score}}</p>
+                                <p><img src="{{tomorrow.teamTwo.image}}">{{tomorrow.teamTwo.name}}</p>
                             </div>
                             @if(tomorrow.hot)
                               <img class="hot" src="/desktop/picture/remen.png">
                             @endif
-                           
                         </div>
                         <div class="download">
                             <div class="status">
@@ -95,7 +96,7 @@
 
 
             <div class="afterTomorrowMatch match">
-                <p class="date afterTomorrow">01月21日<span>后天</span></p>
+                <p class="date afterTomorrow">{{data.afterTomorrowTimes.month}}月{{data.afterTomorrowTimes.day}}日<span>后天</span></p>
                 <div class="noMatch" style="display:none">
                     <p>当日暂无比赛</p>
                 </div>
@@ -106,12 +107,13 @@
                         <div class="timer">{{afterTomorrow.timer}}</div>
                             <div class="matchType">{{{afterTomorrow.matchType}}}</div>
                             <div class="team">
-                                 {{{afterTomorrow.team}}}
+                                <p>{{afterTomorrow.teamOne.name}}<img src="{{afterTomorrow.teamOne.image}}"></p>
+                                <p class="score">{{afterTomorrow.score}}</p>
+                                <p><img src="{{afterTomorrow.teamTwo.image}}">{{afterTomorrow.teamTwo.name}}</p>
                             </div>
                             @if(afterTomorrow.hot)
                               <img class="hot" src="/desktop/picture/remen.png">
                             @endif
-                           
                         </div>
                         <div class="download">
                             <div class="status">
@@ -133,7 +135,7 @@
 
 
             <div class="nextDayMatch match">
-                <p class="date afterTomorrow">01月22日<span>周五</span></p>
+                <p class="date afterTomorrow">{{data.nextDayTimes.month}}月{{data.nextDayTimes.day}}日<span>周五</span></p>
                 <div class="noMatch" style=" display:none">
                     <p>当日暂无比赛</p>
                 </div>
@@ -144,12 +146,13 @@
                         <div class="timer">{{nextDay.timer}}</div>
                             <div class="matchType">{{{nextDay.matchType}}}</div>
                             <div class="team">
-                                 {{{nextDay.team}}}
+                                <p>{{nextDay.teamOne.name}}<img src="{{nextDay.teamOne.image}}"></p>
+                                <p class="score">{{nextDay.score}}</p>
+                                <p><img src="{{nextDay.teamTwo.image}}">{{nextDay.teamTwo.name}}</p>
                             </div>
                             @if(nextDay.hot)
                               <img class="hot" src="/desktop/picture/remen.png">
                             @endif
-                           
                         </div>
                         <div class="download">
                             <div class="status">
@@ -171,7 +174,7 @@
         </div>
     </div>
 </div>
-
+<!--
 <div id="divAdRight" style="DISPLAY: none; POSITION: absolute; TOP: 0px">  
     <a>
         <img src="{{homeDetails.promoteRightSrc}}" />
@@ -183,5 +186,5 @@
     <a><img src="{{homeDetails.promoteLeftSrc}}" /></a>  
     
     </div>
-
+-->
 @include('layouts.footer')
