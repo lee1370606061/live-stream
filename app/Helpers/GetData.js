@@ -29,10 +29,10 @@ const GetData = () => {
 
                 for (const iterator of $('.todayMatch .listBox').toArray()) {
                     let videoDetails = {}
-                    if ($(iterator).find('.notBegin').html() === null) {
-                        const uri = $(iterator).find('.status > a')[0].attribs.href
-                        videoDetails = await getVideoDetails(uri)
-                    }
+                        // if ($(iterator).find('.notBegin').html() === null) {
+                    const uri = $(iterator).find('.status > a')[0].attribs.href
+                    videoDetails = await getVideoDetails(uri)
+                        // }
 
                     data.todayTimes = {
                             day: moment().format('DD'),
@@ -45,6 +45,8 @@ const GetData = () => {
                             isStream: $(iterator).find('.notBegin').html() === null,
                             attr: iterator.attribs,
                             hot: iterator.attribs.hot === '1',
+                            football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
+                            basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
                             videoDetails: videoDetails,
                             timer: $(iterator).find('.timer').text().trim(),
                             matchType: $(iterator).find('.matchType').text().trim(),
@@ -64,10 +66,10 @@ const GetData = () => {
 
                 for (const iterator of $('.tomorrowMatch .contenTab').toArray()) {
                     let videoDetails = {}
-                    if ($(iterator).find('.notBegin').html() === null) {
-                        const uri = $(iterator).find('a')[0].attribs.href
-                        videoDetails = await getVideoDetails(uri)
-                    }
+                        // if ($(iterator).find('.notBegin').html() === null) {
+                    const uri = $(iterator).find('a')[0].attribs.href
+                    videoDetails = await getVideoDetails(uri)
+                        // }
 
                     data.tomorrowTimes = {
                             day: moment().add(1, 'days').format('DD'),
@@ -80,6 +82,8 @@ const GetData = () => {
                             isStream: $(iterator).find('.notBegin').html() === null,
                             attr: iterator.attribs,
                             hot: iterator.attribs.hot === '1',
+                            football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
+                            basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
                             videoDetails: videoDetails,
                             timer: $(iterator).find('.timer').text().trim(),
                             matchType: $(iterator).find('.matchType').text().trim(),
@@ -99,10 +103,10 @@ const GetData = () => {
 
                 for (const iterator of $('.afterTomorrowMatch .contenTab').toArray()) {
                     let videoDetails = {}
-                    if ($(iterator).find('.notBegin').html() === null) {
-                        const uri = $(iterator).find('a')[0].attribs.href
-                        videoDetails = await getVideoDetails(uri)
-                    }
+                        // if ($(iterator).find('.notBegin').html() === null) {
+                    const uri = $(iterator).find('a')[0].attribs.href
+                    videoDetails = await getVideoDetails(uri)
+                        // }
 
                     data.afterTomorrowTimes = {
                             day: moment().add(2, 'days').format('DD'),
@@ -115,6 +119,8 @@ const GetData = () => {
                             isStream: $(iterator).find('.notBegin').html() === null,
                             attr: iterator.attribs,
                             hot: iterator.attribs.hot === '1',
+                            football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
+                            basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
                             videoDetails: videoDetails,
                             timer: $(iterator).find('.timer').text().trim(),
                             matchType: $(iterator).find('.matchType').text().trim(),
@@ -134,10 +140,10 @@ const GetData = () => {
 
                 for (const iterator of $('.nextDayMatch .contenTab').toArray()) {
                     let videoDetails = {}
-                    if ($(iterator).find('.notBegin').html() === null) {
-                        const uri = $(iterator).find('a')[0].attribs.href
-                        videoDetails = await getVideoDetails(uri)
-                    }
+                        // if ($(iterator).find('.notBegin').html() === null) {
+                    const uri = $(iterator).find('a')[0].attribs.href
+                    videoDetails = await getVideoDetails(uri)
+                        // }
 
                     data.nextDayTimes = {
                             day: moment().add(3, 'days').format('DD'),
@@ -151,6 +157,8 @@ const GetData = () => {
                             isStream: $(iterator).find('.notBegin').html() === null,
                             attr: iterator.attribs,
                             hot: iterator.attribs.hot === '1',
+                            football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
+                            basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
                             videoDetails: videoDetails,
                             timer: $(iterator).find('.timer').text().trim(),
                             matchType: $(iterator).find('.matchType').text().trim(),

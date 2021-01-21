@@ -1,165 +1,18 @@
-<div class="footer">
-    <p class="footer_info">Copyright @ 看球网</p>
-    @each(text in homeDetails.bottomProtocol.split('|'))
-    <p>{{text}}</p>
-    @endeach
+<div id="returnTop" onclick="returnTop()">
+    <i class="fas fa-arrow-up fa-lg"></i>
 </div>
 
-<script type="text/javascript" src="/desktop/js/jquery-3.3.1.min.js"></script>
-<!--
-<script type="text/javascript" src="/desktop/js/zhibo_detail.js"></script>
-<script type="text/javascript" src="/desktop/js/index.js"></script>
--->
-<script type="text/javascript" src="/desktop/js/return.js"></script>
+<div class="shadow-lg px-0 bg-white">
+    <footer class="mx-auto py-3 mt-3 text-center">
+        @each(text in homeDetails.bottomProtocol.split('|'))
+        <p>{{text}}</p>
+        @endeach
+    </footer>
+</div>
 
-<script>
-    // 判断比赛状态改变参数
-    var nowState = $(".state").text()
-    if (nowState === "未开始") {
-        $(".state").css("background", "#BDBDBD")
-    }
-    if (nowState === "已结束") {
-        $(".state").css("background", "#34A6FF")
-    }
-
-    function checked(check, num) {
-        var $this = $(check)
-        $(".check li").removeClass("nowChecked");
-        $this.addClass("nowChecked");
-        $("#checked-" + $this.attr("key")).show().siblings(".myContent").hide();
-        if ($this.attr('key') != 'tv') {
-            show(num);
-        }
-        var imgNew = {
-            '0': 'desktop/picture/quanbu2.png',
-            '-1': 'desktop/images/remen2.png',
-            '17': 'desktop/images/lanqiu2.png',
-            '18': 'desktop/images/zuqiu2.png',
-            '19': 'desktop/images/qita2.png',
-            tv: 'desktop/images/tv2.png'
-        }
-        $('.check li').each(function() {
-            if ($(this).hasClass('nowChecked')) {
-                var imgKey = $(this).children('p').children('img').attr('k')
-                $(this).children('p').children('img').attr('src', imgNew[imgKey])
-                var this_pathOld = $(this).siblings('li')
-                this_pathOld.each(function() {
-                    $(this).children('p').children('img').attr('src', $(this).children('p').children('img').attr('data-imgOld'))
-                })
-            }
-        })
-    }
-
-    function show(num) {
-        var match_list = $('.contenTab');
-        match_list.each(function(i, v) {
-            var id = $(this).children('.listBox').attr('id')
-            if (id == num) {
-                $(this).show();
-                $(this).attr('see', 'block')
-            } else if (id != num) {
-                $(this).hide();
-                $(this).attr('see', 'none')
-            }
-            if (num == 0) {
-                $(this).show();
-                $(this).attr('see', 'block')
-            }
-            if (num == -1) {
-                var hot = $(this).children('.listBox').attr('hot');
-                if (hot == 1) {
-                    $(this).show();
-                    $(this).attr('see', 'block')
-                } else {
-                    $(this).hide();
-                    $(this).attr('see', 'none')
-                }
-            }
-        });
-        var match = $('.match')
-        match.each(function(i, v) {
-            var length = $(this).children("div[see='block']").length;
-            if (length == 0) {
-                $(this).children('div.noMatch').show()
-            } else {
-                $(this).children('div.noMatch').hide()
-            }
-        })
-
-    }
-
-    // 滚动事件
-    window.onscroll = function() {
-        // 按钮'今天'显示隐藏
-        var scrollTop = $(document).scrollTop()
-
-        // tabHeader随页面滚动显示隐藏
-        var myContent = $('.myContent');
-        myContent.each(function() {
-            if ($(this).css('display') == 'block') {
-                if ($(this).children().attr('class') == 'tvList') {
-                    $('.toToday').css('display', 'none')
-                } else {
-                    todayHeight = $(this).children('.todayMatch').height() + 558 - 25
-                    tomorrowHeight = $(this).children('.tomorrowMatch').height() + todayHeight
-                    afterTomorrowHeight = $(this).children('.afterTomorrowMatch').height() + tomorrowHeight
-
-                    if (scrollTop > 558) {
-                        $('.toToday').css({
-                            'display': 'block'
-                        })
-                        var dateMonth = $('.today').text().slice(0, 6)
-                        var dateDay = $('.today').text().slice(6, 8)
-                        $('.toToday').html('' + dateMonth + '<span>' + dateDay + '</span>')
-                        $('#leftNav ul li:nth-of-type(1)').addClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(2)').removeClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(3)').removeClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(4)').removeClass('leftNavNowActive')
-                    } else {
-                        $('.toToday').css('display', 'none')
-                        $('#leftNav ul li').removeClass('leftNavNowActive')
-                    }
-                    if (scrollTop > todayHeight) {
-                        var dateMonth = $('.tomorrow').text().slice(0, 6)
-                        var dateDay = $('.tomorrow').text().slice(6, 8)
-                        $('.toToday').html('' + dateMonth + '<span>' + dateDay + '</span>')
-                        $('#leftNav ul li:nth-of-type(1)').removeClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(2)').addClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(3)').removeClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(4)').removeClass('leftNavNowActive')
-                    }
-                    if (scrollTop > tomorrowHeight) {
-                        var dateMonth = $('.afterTomorrow').text().slice(0, 6)
-                        var dateDay = $('.afterTomorrow').text().slice(6, 8)
-                        $('.toToday').html('' + dateMonth + '<span>' + dateDay + '</span>')
-                        $('#leftNav ul li:nth-of-type(1)').removeClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(2)').removeClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(3)').addClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(4)').removeClass('leftNavNowActive')
-                    }
-                    if (scrollTop > afterTomorrowHeight) {
-                        var dateMonth = $('.nextDay').text().slice(0, 6)
-                        var dateDay = $('.nextDay').text().slice(6, 8)
-                        $('.toToday').html('' + dateMonth + '<span>' + dateDay + '</span>')
-                        $('#leftNav ul li:nth-of-type(1)').removeClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(2)').removeClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(3)').removeClass('leftNavNowActive')
-                        $('#leftNav ul li:nth-of-type(4)').addClass('leftNavNowActive')
-                    }
-                }
-
-            }
-        })
-    }
-
-    $('.listBox').each(function() {
-        var isHot = $(this).attr('hot')
-        if (isHot == '1') {
-            $(this).children('.myList').css('font-weight', 'bold')
-        }
-    })
-
-</script>
-
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/all.min.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
 </body>
 </html>

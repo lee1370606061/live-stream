@@ -2,6 +2,9 @@
 node_modules
 package-lock.json
 
+/public/bootstrap-5.0.0-beta1-dist
+/public/fontawesome-free-5.15.2-web
+
 # Adonis directory for storing tmp files
 tmp
 

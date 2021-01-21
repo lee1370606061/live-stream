@@ -10,6 +10,7 @@ const BaseExceptionHandler = use('BaseExceptionHandler')
  */
 
 const Response = use("App/Helpers/Response");
+const Env = use('Env')
 
 class ExceptionHandler extends BaseExceptionHandler {
     /**
@@ -24,7 +25,6 @@ class ExceptionHandler extends BaseExceptionHandler {
      * @return {void}
      */
     async handle(error, { request, response }) {
-        console.log(error)
         if (error.name === "ValidationException") {
             return Response(response, {
                 message: error.messages,
@@ -72,7 +72,16 @@ class ExceptionHandler extends BaseExceptionHandler {
                 status: 500,
             });
         }
-        // response.status(error.status).send(error.message)
+
+        if (error && Env.get('NODE_ENV') === "production") {
+            return Response(response, {
+                message: "错误",
+                success: false,
+                status: 500,
+            });
+        }
+        console.log(error)
+            // response.status(error.status).send(error.message)
         return super.handle(...arguments);
     }
 

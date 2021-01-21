@@ -24,9 +24,8 @@ class LiveController {
      * @param {Response} ctx.response
      * @param {View} ctx.view
      */
-    async index({ params, request, response, view }) {
+    async index({ params, view }) {
 
-        const headers = request.headers()
         const live = await Live.find({ id: 1 })
         const home = await Home.find({ id: 1 })
 
@@ -46,12 +45,7 @@ class LiveController {
         for (const iterator of data[params.type]) {
             if (iterator.id == params.id) result = await iterator
         }
-        console.log(result)
-        if (/iphone|ipod|ipad|ipad|Android|nokia|blackberry|webos|webos|webmate|bada|lg|ucweb|skyfire|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|wap|mobile/i.test(headers['user-agent'])) {
-            return view.render('mobile-live', { data: result, liveDetails: liveDetails, homeDetails: homeDetails })
-        } else {
-            return view.render('desktop-live', { data: result, liveDetails: liveDetails, homeDetails: homeDetails })
-        }
+        return view.render('live', { data: result, liveDetails: liveDetails, homeDetails: homeDetails })
     }
 
     /**

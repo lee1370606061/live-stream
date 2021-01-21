@@ -22,9 +22,8 @@ class HomeController {
      * @param {Response} ctx.response
      * @param {View} ctx.view
      */
-    async index({ request, response, view }) {
+    async index({ view }) {
 
-        const headers = request.headers()
         const home = await Home.find({ id: 1 })
 
         const homeDetails = {
@@ -34,11 +33,7 @@ class HomeController {
             bottomProtocol: home.bottom_protocol
         }
 
-        if (/iphone|ipod|ipad|ipad|Android|nokia|blackberry|webos|webos|webmate|bada|lg|ucweb|skyfire|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|wap|mobile/i.test(headers['user-agent'])) {
-            return view.render('mobile', { data: data, homeDetails: homeDetails })
-        } else {
-            return view.render('desktop', { data: data, homeDetails: homeDetails })
-        }
+        return view.render('desktop', { data: data, homeDetails: homeDetails })
     }
 
     /**
