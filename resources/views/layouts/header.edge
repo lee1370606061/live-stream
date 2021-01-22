@@ -31,9 +31,11 @@
             <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/"><button type="button" class="btn btn-outline-primary">直播</button></a>
             </li>
+            @if(homeDetails.appDownloadLink)
             <li class="nav-item">
-                <a class="nav-link" href="#"><button type="button" class="btn btn-outline-primary">下载APP <i class="fas fa-download fa-lg"></i></button></a>
+                <a class="nav-link" href="{{homeDetails.appDownloadLink}}"><button type="button" class="btn btn-outline-primary">下载APP <i class="fas fa-download fa-lg"></i></button></a>
             </li>
+            @endif
             </ul>
     </header>
 </div>

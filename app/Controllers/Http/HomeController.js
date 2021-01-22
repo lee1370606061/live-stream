@@ -27,6 +27,7 @@ class HomeController {
         const home = await Home.find({ id: 1 })
 
         const homeDetails = {
+            appDownloadLink: home.app_download_link,
             logoSrc: home.logo_src,
             promoteLeftSrc: home.promote_left_src,
             promoteRightSrc: home.promote_right_src,
@@ -50,6 +51,7 @@ class HomeController {
         const home = await Home.find({ id: 1 })
 
         const homeDetails = {
+            appDownloadLink: home.app_download_link,
             logoSrc: home.logo_src,
             promoteLeftSrc: home.promote_left_src,
             promoteRightSrc: home.promote_right_src,
@@ -81,6 +83,7 @@ class HomeController {
      */
     async store({ request, response }) {
         const {
+            appDownloadLink,
             logoSrc,
             promoteLeftSrc,
             promoteRightSrc,
@@ -89,6 +92,7 @@ class HomeController {
 
         const home = await Home.findOrCreate({ id: 1 })
 
+        home.app_download_link = appDownloadLink
         home.logo_src = logoSrc
         home.promote_left_src = promoteLeftSrc
         home.promote_right_src = promoteRightSrc

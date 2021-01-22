@@ -5,19 +5,17 @@ const Schema = use('Schema')
 
 class LiveSchema extends Schema {
     up() {
-        this.create('lives', (table) => {
-            table.increments()
+        this.table('lives', (table) => {
             table.text('live_sliders').nullable()
-            table.string('bottom_promote_src').nullable()
             table.string('bottom_promote_link').nullable()
-            table.string('right_promote_src').nullable()
             table.string('right_promote_link').nullable()
-            table.timestamps()
         })
     }
 
     down() {
-        this.drop('lives')
+        this.table('lives', (table) => {
+            // reverse alternations
+        })
     }
 }
 

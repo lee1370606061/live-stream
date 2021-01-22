@@ -29,12 +29,18 @@ class LiveController {
         const live = await Live.find({ id: 1 })
         const home = await Home.find({ id: 1 })
 
+
+
         const liveDetails = {
+            liveSliders: live.live_sliders,
+            bottomPromoteLink: live.bottom_promote_link,
+            rightPromoteLink: live.right_promote_link,
             bottomPromoteSrc: live.bottom_promote_src,
             rightPromoteSrc: live.right_promote_src
         }
 
         const homeDetails = {
+            appDownloadLink: home.app_download_link,
             logoSrc: home.logo_src,
             promoteLeftSrc: home.promote_left_src,
             promoteRightSrc: home.promote_right_src,
@@ -67,14 +73,21 @@ class LiveController {
      * @param {Request} ctx.request
      * @param {Response} ctx.response
      */
+
     async store({ request, response }) {
         const {
+            liveSliders,
+            bottomPromoteLink,
+            rightPromoteLink,
             bottomPromoteSrc,
             rightPromoteSrc
         } = request.all()
 
         const live = await Live.findOrCreate({ id: 1 })
 
+        live.live_sliders = liveSliders
+        live.bottom_promote_link = bottomPromoteLink
+        live.right_promote_link = rightPromoteLink
         live.bottom_promote_src = bottomPromoteSrc
         live.right_promote_src = rightPromoteSrc
 
@@ -97,10 +110,12 @@ class LiveController {
         const live = await Live.find({ id: 1 })
 
         const liveDetails = {
+            liveSliders: live.live_sliders,
+            bottomPromoteLink: live.bottom_promote_link,
+            rightPromoteLink: live.right_promote_link,
             bottomPromoteSrc: live.bottom_promote_src,
             rightPromoteSrc: live.right_promote_src
         }
-
         return Response(response, { data: liveDetails })
     }
 
