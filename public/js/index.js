@@ -14,6 +14,8 @@ $(document).ready(function(e) {
     if (width <= 600) {
         $('header a img').css('padding-left', '.5rem')
 
+        $('body').css('margin-bottom', '80px')
+
         $('main').removeClass('mt-4')
         $('main').addClass('mt-1')
 
@@ -53,8 +55,8 @@ $(document).ready(function(e) {
         $('#video').css('height', '200px')
 
         $('.left-banner').removeClass('me-3')
-
-
+    } else {
+        $('.bottom-download').remove()
     }
 });
 
@@ -63,6 +65,11 @@ function returnTop() {
         top: 0,
         behavior: 'smooth',
     });
+}
+
+function gotoDownload(url) {
+    console.log(e)
+        // location.href = url
 }
 
 function onChange(type) {

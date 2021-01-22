@@ -175,7 +175,13 @@ const GetData = () => {
 
                     countNextDay++
                 }
-                fs.createWriteStream(res.options.filename).write(JSON.stringify(data));
+                console.log(`run${new Date().toLocaleTimeString()}`)
+                try {
+                    fs.createWriteStream(res.options.filename).write(JSON.stringify(data));
+                } catch (error) {
+                    console.log(error)
+                }
+
             }
 
             done();

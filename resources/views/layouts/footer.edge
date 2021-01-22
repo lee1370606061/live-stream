@@ -1,3 +1,4 @@
+
 <div id="returnTop" onclick="returnTop()">
     <i class="fas fa-arrow-up fa-lg"></i>
 </div>
@@ -8,6 +9,19 @@
         <p>{{text}}</p>
         @endeach
     </footer>
+</div>
+
+<div class="position-relative">
+    <div class="bottom-download position-fixed bottom-0 p-2 d-flex justify-content-between align-items-center">
+        <div>
+        <img src="{{homeDetails.logoSrc}}">
+        </div>
+        <div class="text-white d-flex flex-column justify-content-between align-items-center">
+          <p class="m-0" style="font-size:1.1rem;font-weight: bold">天博直播-专属推荐体育直播</p>
+          <p class="m-0" style="font-size:.9rem;color:rgb(178, 178, 178)">天博直播-专属推荐体育直播</p>
+        </div>
+        <button type="button" onclick="gotoDownload" url="{{homeDetails.appDownloadLink}}" class="btn btn-primary">下载APP</button>
+    </div>
 </div>
 
 <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>

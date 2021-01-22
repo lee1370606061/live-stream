@@ -11,7 +11,6 @@ class ScheduleIt extends Task {
 
     async handle() {
         // this.info('Task ScheduleIt handle')
-        console.log('run')
         GetData()
     }
 
