@@ -121,7 +121,9 @@ footer {
     #video {
         height: 200px;
     }
-    .me-3 {}
+    .me-3 {
+        margin-right: 0rem!important;
+    }
 }
 
 @media only screen and (min-width: 800px) {
