@@ -55,8 +55,6 @@ $(document).ready(function(e) {
         $('#video').css('height', '200px')
 
         $('.left-banner').removeClass('me-3')
-    } else {
-        $('.bottom-download').remove()
     }
 });
 

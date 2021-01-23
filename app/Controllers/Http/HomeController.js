@@ -56,6 +56,12 @@ class HomeController {
         }
 
         const homeDetails = {
+            titleLogoSrc: home.title_logo_src,
+            title: home.title,
+            seoKeywords: home.seo_keywords,
+            seoDescription: home.seo_description,
+            footPromoteTop: home.foot_promote_top,
+            footPromoteBottom: home.foot_promote_bottom,
             appDownloadLink: home.app_download_link,
             logoSrc: home.logo_src,
             promoteLeftSrc: home.promote_left_src,
@@ -80,6 +86,12 @@ class HomeController {
         const home = await Home.find({ id: 1 })
 
         const homeDetails = {
+            titleLogoSrc: home.title_logo_src,
+            title: home.title,
+            seoKeywords: home.seo_keywords,
+            seoDescription: home.seo_description,
+            footPromoteTop: home.foot_promote_top,
+            footPromoteBottom: home.foot_promote_bottom,
             appDownloadLink: home.app_download_link,
             logoSrc: home.logo_src,
             promoteLeftSrc: home.promote_left_src,
@@ -111,7 +123,14 @@ class HomeController {
      * @param {Response} ctx.response
      */
     async store({ request, response }) {
+
         const {
+            titleLogoSrc,
+            title,
+            seoKeywords,
+            seoDescription,
+            footPromoteTop,
+            footPromoteBottom,
             appDownloadLink,
             logoSrc,
             promoteLeftSrc,
@@ -126,6 +145,12 @@ class HomeController {
         home.promote_left_src = promoteLeftSrc
         home.promote_right_src = promoteRightSrc
         home.bottom_protocol = bottomProtocol
+        home.title_logo_src = titleLogoSrc
+        home.title = title
+        home.seo_keywords = seoKeywords
+        home.seo_description = seoDescription
+        home.foot_promote_top = footPromoteTop
+        home.foot_promote_bottom = footPromoteBottom
 
         await home.save()
 

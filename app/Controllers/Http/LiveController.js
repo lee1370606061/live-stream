@@ -40,6 +40,12 @@ class LiveController {
         }
 
         const homeDetails = {
+            titleLogoSrc: home.title_logo_src,
+            title: home.title,
+            seoKeywords: home.seo_keywords,
+            seoDescription: home.seo_description,
+            footPromoteTop: home.foot_promote_top,
+            footPromoteBottom: home.foot_promote_bottom,
             appDownloadLink: home.app_download_link,
             logoSrc: home.logo_src,
             promoteLeftSrc: home.promote_left_src,
