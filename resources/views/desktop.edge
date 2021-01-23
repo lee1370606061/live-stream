@@ -55,7 +55,7 @@
 
       <div class="card tomorrow is-mobile">
         <div class="card-header text-center">
-          {{data.tomorrowTimes.month}}月 {{data.tomorrowTimes.day}}日<span> 今天</span>
+          {{data.tomorrowTimes.month}}月 {{data.tomorrowTimes.day}}日<span> 明天</span>
         </div>
         <ul class="list-group list-group-flush">
             @each(tomorrow in data.tomorrow)
@@ -91,7 +91,7 @@
 
       <div class="card afterTomorrow is-mobile">
         <div class="card-header text-center">
-          {{data.afterTomorrowTimes.month}}月 {{data.afterTomorrowTimes.day}}日<span> 今天</span>
+          {{data.afterTomorrowTimes.month}}月 {{data.afterTomorrowTimes.day}}日<span> 后天</span>
         </div>
         <ul class="list-group list-group-flush">
             @each(afterTomorrow in data.afterTomorrow)
@@ -109,7 +109,7 @@
                         @endif
                     </div>
                     @if(afterTomorrow.isStream)
-                    <a target="_blank" href="{{ route('live', { type: 'afterTomorrow', id: afterTomorrow.id }) }}">
+                    <a target="_blank" href="{{ route('live', { type: 'after_tomorrow', id: afterTomorrow.id }) }}">
                         <button type="button" class="btn btn-primary btn-sm "><i class="fas fa-play-circle fa-lg"></i> <span>视频直播</span></button>
                     </a>
                     @else

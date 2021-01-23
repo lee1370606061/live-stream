@@ -34,9 +34,10 @@ Route.group(() => {
     Route.post('/live/get', 'LiveController.show').middleware('auth')
 
     Route.post('/getData', ({ response }) => {
-        GetData()
-        return Response(response, {})
-    }).middleware('auth')
+            GetData()
+            return Response(response, {})
+        })
+        // .middleware('auth')
 
 
     for (const route of UserController) {

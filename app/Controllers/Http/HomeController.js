@@ -7,11 +7,14 @@
 const Home = use('App/Models/Home')
 const Response = use("App/Helpers/Response");
 const Helpers = use('Helpers')
-const data = require(`${Helpers.appRoot()}/data.json`)
-
-/**
- * Resourceful controller for interacting with homes
- */
+const Log = use("App/Helpers/Log");
+const DataSource = use("App/Models/DataSource");
+const Database = use('Database')
+const Base64 = use("App/Helpers/Base64");
+const moment = require('moment')
+    /**
+     * Resourceful controller for interacting with homes
+     */
 class HomeController {
     /**
      * Show a list of all homes.
@@ -22,9 +25,35 @@ class HomeController {
      * @param {Response} ctx.response
      * @param {View} ctx.view
      */
-    async index({ view }) {
+    async index({ view, response }) {
 
         const home = await Home.find({ id: 1 })
+        const tempData = await Database.table('data_sources').orderBy('id', 'desc').limit(1)
+        const data = {
+            today: JSON.parse(Base64.decode(tempData[0].today)),
+            tomorrow: JSON.parse(Base64.decode(tempData[0].tomorrow)),
+            afterTomorrow: JSON.parse(Base64.decode(tempData[0].after_tomorrow)),
+            todayTimes: {
+                day: moment().format('DD'),
+                month: moment().format('MM'),
+                year: moment().format('YYYY'),
+            },
+            tomorrowTimes: {
+                day: moment().add(1, 'days').format('DD'),
+                month: moment().add(1, 'days').format('MM'),
+                year: moment().add(1, 'days').format('YYYY'),
+            },
+            afterTomorrowTimes: {
+                day: moment().add(2, 'days').format('DD'),
+                month: moment().add(2, 'days').format('MM'),
+                year: moment().add(2, 'days').format('YYYY'),
+            },
+            nextDayTimes: {
+                day: moment().add(3, 'days').format('DD'),
+                month: moment().add(3, 'days').format('MM'),
+                year: moment().add(3, 'days').format('YYYY'),
+            },
+        }
 
         const homeDetails = {
             appDownloadLink: home.app_download_link,
@@ -33,7 +62,7 @@ class HomeController {
             promoteRightSrc: home.promote_right_src,
             bottomProtocol: home.bottom_protocol
         }
-
+        Log.info(`home`)
         return view.render('desktop', { data: data, homeDetails: homeDetails })
     }
 

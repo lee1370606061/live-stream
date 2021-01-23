@@ -7,9 +7,9 @@
 const Live = use('App/Models/Live')
 const Home = use('App/Models/Home')
 const Response = use("App/Helpers/Response");
-const Helpers = use('Helpers')
-const data = require(`${Helpers.appRoot()}/data.json`)
-
+const Database = use('Database')
+const Base64 = use("App/Helpers/Base64");
+const moment = require('moment')
 
 /**
  * Resourceful controller for interacting with lives
@@ -29,7 +29,7 @@ class LiveController {
         const live = await Live.find({ id: 1 })
         const home = await Home.find({ id: 1 })
 
-
+        const tempData = await Database.table('data_sources').select(params.type).orderBy('id', 'desc').limit(1)
 
         const liveDetails = {
             liveSliders: live.live_sliders,
@@ -48,9 +48,10 @@ class LiveController {
         }
 
         let result = {}
-        for (const iterator of data[params.type]) {
+        for (const iterator of JSON.parse(Base64.decode(tempData[0][params.type]))) {
             if (iterator.id == params.id) result = await iterator
         }
+        console.log(result)
         return view.render('live', { data: result, liveDetails: liveDetails, homeDetails: homeDetails })
     }
 
