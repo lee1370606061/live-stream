@@ -82,7 +82,16 @@ footer {
     html,
     body {
         font-size: 12px;
-        /* background-color: black; */
+        margin-bottom: 40px;
+    }
+    .py-3 {
+        padding: .5rem 0 !important;
+    }
+    .mt-4 {
+        margin-top: .2rem!important;
+    }
+    header a img {
+        padding-left: .5rem;
     }
     main {
         margin-top: 0 !important;
@@ -90,12 +99,32 @@ footer {
     main>.card {
         padding: 6px !important;
     }
+    .is-mobile,
+    .isHot,
+    .matchType,
+    .right-banner,
+    .imgOne,
+    .imgTwo {
+        display: none;
+    }
+    .list-group li {
+        padding: .5rem .2rem;
+    }
+    .bottom-download {
+        height: 60px;
+    }
+    .teamOne,
+    .teamTwo {
+        width: 5rem;
+        text-overflow: ellipsis;
+    }
+    #video {
+        height: 200px;
+    }
+    .me-3 {}
 }
 
 @media only screen and (min-width: 800px) {
-    body {
-        /* background-color: black; */
-    }
     .bottom-download {
         display: none !important;
     }

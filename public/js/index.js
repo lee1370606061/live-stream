@@ -1,5 +1,4 @@
 $(document).ready(function(e) {
-    var width = window.innerWidth
     window.addEventListener('scroll', function() {
         var scrollTop = $(document).scrollTop()
         if (scrollTop < 300) {
@@ -8,54 +7,6 @@ $(document).ready(function(e) {
             $("#returnTop").show()
         }
     })
-
-
-    //手机版
-    if (width <= 600) {
-        $('header a img').css('padding-left', '.5rem')
-
-        $('body').css('margin-bottom', '80px')
-
-        $('main').removeClass('mt-4')
-        $('main').addClass('mt-1')
-
-        $('.is-mobile a button span').each((key, element) => {
-            $(element).empty()
-        });
-
-        $('.is-mobile .isHot').each((key, element) => {
-            $(element).hide()
-        });
-
-        $('.is-mobile li').each((key, element) => {
-            $(element).css('padding', '.5rem .2rem')
-        });
-
-        $('.is-mobile .matchType').each((key, element) => {
-            $(element).hide()
-        });
-
-        $('.is-mobile .teamOne').each((key, element) => {
-            var html = $(element).html()
-            if (html.length > 4) {
-                $(element).html(html.substr(0, 4) + '...')
-            }
-        });
-
-        $('.is-mobile .teamTwo').each((key, element) => {
-            var html = $(element).html()
-            if (html.length > 4) {
-                $(element).html(html.substr(0, 4) + '...')
-            }
-        });
-
-        $('.right-banner').hide()
-        $('.imgOne').hide()
-        $('.imgTwo').hide()
-        $('#video').css('height', '200px')
-
-        $('.left-banner').removeClass('me-3')
-    }
 });
 
 function returnTop() {
@@ -63,11 +14,6 @@ function returnTop() {
         top: 0,
         behavior: 'smooth',
     });
-}
-
-function gotoDownload(url) {
-    console.log(e)
-        // location.href = url
 }
 
 function onChange(type) {
