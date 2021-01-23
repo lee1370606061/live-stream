@@ -3,17 +3,17 @@
 <main class="mx-auto mt-4">
     <div class="card shadow p-4">
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" onclick="onChange('all')" id="all-button" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="fas fa-align-justify fa-lg"></i> 全部</a>
+        <li class="nav-item" onclick="onChange(this, 'all')">
+          <a class="nav-link active" id="all-button" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><img style="width:1.8rem" src="/images/all-active.png" data="all"> 全部</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" id="hot-button" onclick="onChange('hot')" data-bs-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="fas fa-fire-alt fa-lg"></i> 热门</a>
+        <li class="nav-item" onclick="onChange(this, 'hot')">
+          <a class="nav-link" id="hot-button" data-bs-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><img style="width:1.8rem" src="/images/remen-inactive.png" data="hot"> 热门</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" id="football-button" onclick="onChange('football')" data-bs-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="fas fa-futbol fa-lg"></i> 足球</a>
+        <li class="nav-item" onclick="onChange(this, 'football')">
+          <a class="nav-link" id="football-button" data-bs-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><img style="width:1.8rem" src="/images/zuqiu.png" data="football"> 足球</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" id="basketball-button" onclick="onChange('basketball')" data-bs-toggle="pill" href="#pills-basketball" role="tab" aria-controls="pills-basketball" aria-selected="false"><i class="fas fa-basketball-ball fa-lg"></i> 篮球</a>
+        <li class="nav-item" onclick="onChange(this, 'basketball')">
+            <a class="nav-link" id="basketball-button" data-bs-toggle="pill" href="#pills-basketball" role="tab" aria-controls="pills-basketball" aria-selected="false"><img style="width:1.8rem" src="/images/lanqiu-inactive.png" data="basketball"> 篮球</a>
           </li>
       </ul>
 
@@ -33,16 +33,16 @@
                         <p class="m-0">{{today.score}}</p>
                         <p class="m-0"><img class="mx-2" style="width:30px" src="{{today.teamTwo.image}}"><div class="teamTwo">{{today.teamTwo.name}}</div></p>
                         @if(today.hot)
-                            <img class="mx-2 isHot" style="width:20px" src="/picture/remen.png">
+                            <img class="mx-2 isHot" style="width:20px" src="/images/remen-inactive.png">
                         @endif
                     </div>
                     @if(today.isStream)
                     <a target="_blank" href="{{ route('live', { type: 'today', id: today.id }) }}">
-                        <button type="button" class="btn btn-primary btn-sm "><i class="fas fa-play-circle fa-lg"></i> <span class="is-mobile">视频直播</span></button>
+                        <button type="button" class="btn btn-primary btn-sm d-flex"><img style="width:1.3rem" src="/images/shiping.png"><span class="ms-1 is-mobile">视频直播</span></button>
                     </a>
                     @else
                     <a>
-                        <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-play-circle fa-lg"></i> <span class="is-mobile">暂未开始</span></button>
+                        <button type="button" class="btn btn-secondary btn-sm d-flex"><img style="width:1.3rem" src="/images/shiping.png"> <span class="ms-1 is-mobile">暂未开始</span></button>
                     </a>
                     @endif
                     
@@ -53,7 +53,7 @@
 
       <!--end card-->
 
-      <div class="card tomorrow is-mobile">
+      <div class="card tomorrow">
         <div class="card-header text-center">
           {{data.tomorrowTimes.month}}月 {{data.tomorrowTimes.day}}日<span> 明天</span>
         </div>
@@ -69,16 +69,16 @@
                         <p class="m-0">{{tomorrow.score}}</p>
                         <p class="m-0"><img class="mx-2" style="width:30px" src="{{tomorrow.teamTwo.image}}"><span class="teamTwo">{{tomorrow.teamTwo.name}}</span></p>
                         @if(tomorrow.hot)
-                            <img class="mx-2 isHot" style="width:20px" src="/picture/remen.png">
+                            <img class="mx-2 isHot" style="width:20px" src="/images/remen-inactive.png">
                         @endif
                     </div>
                     @if(tomorrow.isStream)
                     <a target="_blank" href="{{ route('live', { type: 'tomorrow', id: tomorrow.id }) }}">
-                        <button type="button" class="btn btn-primary btn-sm "><i class="fas fa-play-circle fa-lg"></i> <span class="is-mobile">视频直播</span></button>
+                        <button type="button" class="btn btn-primary btn-sm d-flex"><img style="width:1.3rem" src="/images/shiping.png"> <span class="ms-1 is-mobile">视频直播</span></button>
                     </a>
                     @else
                     <a>
-                        <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-play-circle fa-lg"></i> <span class="is-mobile">暂未开始</span></button>
+                        <button type="button" class="btn btn-secondary btn-sm d-flex"><img style="width:1.3rem" src="/images/shiping.png"> <span class="ms-1 is-mobile">暂未开始</span></button>
                     </a>
                     @endif
                     
@@ -89,7 +89,7 @@
 
       <!--end card-->
 
-      <div class="card afterTomorrow is-mobile">
+      <div class="card afterTomorrow">
         <div class="card-header text-center">
           {{data.afterTomorrowTimes.month}}月 {{data.afterTomorrowTimes.day}}日<span> 后天</span>
         </div>
@@ -105,16 +105,16 @@
                         <p class="m-0">{{afterTomorrow.score}}</p>
                         <p class="m-0"><img class="mx-2" style="width:30px" src="{{afterTomorrow.teamTwo.image}}"><div class="teamTwo">{{afterTomorrow.teamTwo.name}}</div></p>
                         @if(afterTomorrow.hot)
-                            <img class="mx-2 isHot" style="width:20px" src="/picture/remen.png">
+                            <img class="mx-2 isHot" style="width:20px" src="/images/remen-inactive.png">
                         @endif
                     </div>
                     @if(afterTomorrow.isStream)
                     <a target="_blank" href="{{ route('live', { type: 'after_tomorrow', id: afterTomorrow.id }) }}">
-                        <button type="button" class="btn btn-primary btn-sm "><i class="fas fa-play-circle fa-lg"></i> <span class="is-mobile">视频直播</span></button>
+                        <button type="button" class="btn btn-primary btn-sm d-flex"><img style="width:1.3rem" src="/images/shiping.png"> <span class="ms-1 is-mobile">视频直播</span></button>
                     </a>
                     @else
                     <a>
-                        <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-play-circle fa-lg"></i> <span class="is-mobile">暂未开始</span></button>
+                        <button type="button" class="btn btn-secondary btn-sm d-flex"><img style="width:1.3rem" src="/images/shiping.png"> <span class="ms-1 is-mobile">暂未开始</span></button>
                     </a>
                     @endif
                     

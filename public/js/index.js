@@ -16,7 +16,30 @@ function returnTop() {
     });
 }
 
-function onChange(type) {
+function onChange($this, type) {
+
+    var active = {
+        all: '/images/all-active.png',
+        hot: '/images/remen-active.png',
+        football: '/images/zuqiu.png',
+        basketball: '/images/lanqiu-active.png',
+    }
+
+    var inActive = {
+        all: '/images/all-inactive.png',
+        hot: '/images/remen-inactive.png',
+        football: '/images/zuqiu.png',
+        basketball: '/images/lanqiu-inactive.png',
+    }
+
+    $($this.parentNode).find('img').each(function(key, element) {
+        $(element).attr('src', inActive[element.attributes.data.value])
+    })
+
+    $($this).find('img').attr('src', active[type])
+
+
+
     $('.change-type').each((key, element) => {
         if (type == 'all') {
             $(element).show()
