@@ -1,7 +1,9 @@
 const Crawler = require("crawler");
 const fs = require('fs');
-const moment = require('moment');
+
 const Response = use("App/Helpers/Response");
+const Base64 = use("App/Helpers/Base64");
+const DataSource = use("App/Models/DataSource");
 const Helpers = use('Helpers')
 
 const GetData = () => {
@@ -29,157 +31,138 @@ const GetData = () => {
 
                 for (const iterator of $('.todayMatch .listBox').toArray()) {
                     let videoDetails = {}
-                        // if ($(iterator).find('.notBegin').html() === null) {
-                    const uri = $(iterator).find('.status > a')[0].attribs.href
-                    videoDetails = await getVideoDetails(uri)
-                        // }
-
-                    data.todayTimes = {
-                            day: moment().format('DD'),
-                            month: moment().format('MM'),
-                            year: moment().format('YYYY'),
+                    if ($(iterator).find('.notBegin').html() === null) {
+                        const uri = $(iterator).find('.status > a')[0].attribs.href
+                        videoDetails = await getVideoDetails(uri)
+                    }
+                    data.today.push({
+                        id: countToday,
+                        isStream: $(iterator).find('.notBegin').html() === null,
+                        attr: iterator.attribs,
+                        hot: iterator.attribs.hot === '1',
+                        football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
+                        basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
+                        videoDetails: videoDetails,
+                        timer: $(iterator).find('.timer').text().trim(),
+                        matchType: $(iterator).find('.matchType').text().trim(),
+                        teamOne: {
+                            name: $(iterator).find('.team p:nth-child(1)').text(),
+                            image: $(iterator).find('.team p:nth-child(1) > img')[0].attribs.src,
                         },
-
-                        data.today.push({
-                            id: countToday,
-                            isStream: $(iterator).find('.notBegin').html() === null,
-                            attr: iterator.attribs,
-                            hot: iterator.attribs.hot === '1',
-                            football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
-                            basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
-                            videoDetails: videoDetails,
-                            timer: $(iterator).find('.timer').text().trim(),
-                            matchType: $(iterator).find('.matchType').text().trim(),
-                            teamOne: {
-                                name: $(iterator).find('.team p:nth-child(1)').text(),
-                                image: $(iterator).find('.team p:nth-child(1) > img')[0].attribs.src,
-                            },
-                            teamTwo: {
-                                name: $(iterator).find('.team p:nth-child(3)').text(),
-                                image: $(iterator).find('.team p:nth-child(3) > img')[0].attribs.src,
-                            },
-                            score: $(iterator).find('.team .score').html()
-                        })
+                        teamTwo: {
+                            name: $(iterator).find('.team p:nth-child(3)').text(),
+                            image: $(iterator).find('.team p:nth-child(3) > img')[0].attribs.src,
+                        },
+                        score: $(iterator).find('.team .score').html()
+                    })
 
                     countToday++
                 }
 
                 for (const iterator of $('.tomorrowMatch .contenTab').toArray()) {
                     let videoDetails = {}
-                        // if ($(iterator).find('.notBegin').html() === null) {
-                    const uri = $(iterator).find('a')[0].attribs.href
-                    videoDetails = await getVideoDetails(uri)
-                        // }
+                    if ($(iterator).find('.notBegin').html() === null) {
+                        const uri = $(iterator).find('a')[0].attribs.href
+                        videoDetails = await getVideoDetails(uri)
+                    }
 
-                    data.tomorrowTimes = {
-                            day: moment().add(1, 'days').format('DD'),
-                            month: moment().add(1, 'days').format('MM'),
-                            year: moment().add(1, 'days').format('YYYY'),
+                    data.tomorrow.push({
+                        id: countTomorrow,
+                        isStream: $(iterator).find('.notBegin').html() === null,
+                        attr: iterator.attribs,
+                        hot: iterator.attribs.hot === '1',
+                        football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
+                        basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
+                        videoDetails: videoDetails,
+                        timer: $(iterator).find('.timer').text().trim(),
+                        matchType: $(iterator).find('.matchType').text().trim(),
+                        teamOne: {
+                            name: $(iterator).find('.team p:nth-child(1)').text(),
+                            image: $(iterator).find('.team p:nth-child(1) > img')[0].attribs.src,
                         },
-
-                        data.tomorrow.push({
-                            id: countTomorrow,
-                            isStream: $(iterator).find('.notBegin').html() === null,
-                            attr: iterator.attribs,
-                            hot: iterator.attribs.hot === '1',
-                            football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
-                            basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
-                            videoDetails: videoDetails,
-                            timer: $(iterator).find('.timer').text().trim(),
-                            matchType: $(iterator).find('.matchType').text().trim(),
-                            teamOne: {
-                                name: $(iterator).find('.team p:nth-child(1)').text(),
-                                image: $(iterator).find('.team p:nth-child(1) > img')[0].attribs.src,
-                            },
-                            teamTwo: {
-                                name: $(iterator).find('.team p:nth-child(3)').text(),
-                                image: $(iterator).find('.team p:nth-child(3) > img')[0].attribs.src,
-                            },
-                            score: $(iterator).find('.team .score').html()
-                        })
+                        teamTwo: {
+                            name: $(iterator).find('.team p:nth-child(3)').text(),
+                            image: $(iterator).find('.team p:nth-child(3) > img')[0].attribs.src,
+                        },
+                        score: $(iterator).find('.team .score').html()
+                    })
 
                     countTomorrow++
                 }
 
                 for (const iterator of $('.afterTomorrowMatch .contenTab').toArray()) {
                     let videoDetails = {}
-                        // if ($(iterator).find('.notBegin').html() === null) {
-                    const uri = $(iterator).find('a')[0].attribs.href
-                    videoDetails = await getVideoDetails(uri)
-                        // }
+                    if ($(iterator).find('.notBegin').html() === null) {
+                        const uri = $(iterator).find('a')[0].attribs.href
+                        videoDetails = await getVideoDetails(uri)
+                    }
 
-                    data.afterTomorrowTimes = {
-                            day: moment().add(2, 'days').format('DD'),
-                            month: moment().add(2, 'days').format('MM'),
-                            year: moment().add(2, 'days').format('YYYY'),
+                    data.afterTomorrow.push({
+                        id: countAfterTomorrow,
+                        isStream: $(iterator).find('.notBegin').html() === null,
+                        attr: iterator.attribs,
+                        hot: iterator.attribs.hot === '1',
+                        football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
+                        basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
+                        videoDetails: videoDetails,
+                        timer: $(iterator).find('.timer').text().trim(),
+                        matchType: $(iterator).find('.matchType').text().trim(),
+                        teamOne: {
+                            name: $(iterator).find('.team p:nth-child(1)').text(),
+                            image: $(iterator).find('.team p:nth-child(1) > img')[0].attribs.src,
                         },
-
-                        data.afterTomorrow.push({
-                            id: countAfterTomorrow,
-                            isStream: $(iterator).find('.notBegin').html() === null,
-                            attr: iterator.attribs,
-                            hot: iterator.attribs.hot === '1',
-                            football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
-                            basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
-                            videoDetails: videoDetails,
-                            timer: $(iterator).find('.timer').text().trim(),
-                            matchType: $(iterator).find('.matchType').text().trim(),
-                            teamOne: {
-                                name: $(iterator).find('.team p:nth-child(1)').text(),
-                                image: $(iterator).find('.team p:nth-child(1) > img')[0].attribs.src,
-                            },
-                            teamTwo: {
-                                name: $(iterator).find('.team p:nth-child(3)').text(),
-                                image: $(iterator).find('.team p:nth-child(3) > img')[0].attribs.src,
-                            },
-                            score: $(iterator).find('.team .score').html()
-                        })
+                        teamTwo: {
+                            name: $(iterator).find('.team p:nth-child(3)').text(),
+                            image: $(iterator).find('.team p:nth-child(3) > img')[0].attribs.src,
+                        },
+                        score: $(iterator).find('.team .score').html()
+                    })
 
                     countAfterTomorrow++
                 }
 
                 for (const iterator of $('.nextDayMatch .contenTab').toArray()) {
                     let videoDetails = {}
-                        // if ($(iterator).find('.notBegin').html() === null) {
-                    const uri = $(iterator).find('a')[0].attribs.href
-                    videoDetails = await getVideoDetails(uri)
-                        // }
-
-                    data.nextDayTimes = {
-                            day: moment().add(3, 'days').format('DD'),
-                            month: moment().add(3, 'days').format('MM'),
-                            year: moment().add(3, 'days').format('YYYY'),
+                    if ($(iterator).find('.notBegin').html() === null) {
+                        const uri = $(iterator).find('a')[0].attribs.href
+                        videoDetails = await getVideoDetails(uri)
+                    }
+                    data.nextDay.push({
+                        id: countNextDay,
+                        isStream: $(iterator).find('.notBegin').html() === null,
+                        attr: iterator.attribs,
+                        hot: iterator.attribs.hot === '1',
+                        football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
+                        basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
+                        videoDetails: videoDetails,
+                        timer: $(iterator).find('.timer').text().trim(),
+                        matchType: $(iterator).find('.matchType').text().trim(),
+                        teamOne: {
+                            name: $(iterator).find('.team p:nth-child(1)').text(),
+                            image: $(iterator).find('.team p:nth-child(1) > img')[0].attribs.src,
                         },
-
-
-                        data.nextDay.push({
-                            id: countNextDay,
-                            isStream: $(iterator).find('.notBegin').html() === null,
-                            attr: iterator.attribs,
-                            hot: iterator.attribs.hot === '1',
-                            football: videoDetails.video && videoDetails.video.src.includes('sportlive.cc') || false,
-                            basketball: videoDetails.video && videoDetails.video.src.includes('huolisport.cn') || false,
-                            videoDetails: videoDetails,
-                            timer: $(iterator).find('.timer').text().trim(),
-                            matchType: $(iterator).find('.matchType').text().trim(),
-                            teamOne: {
-                                name: $(iterator).find('.team p:nth-child(1)').text(),
-                                image: $(iterator).find('.team p:nth-child(1) > img')[0].attribs.src,
-                            },
-                            teamTwo: {
-                                name: $(iterator).find('.team p:nth-child(3)').text(),
-                                image: $(iterator).find('.team p:nth-child(3) > img')[0].attribs.src,
-                            },
-                            score: $(iterator).find('.team .score').html()
-                        })
+                        teamTwo: {
+                            name: $(iterator).find('.team p:nth-child(3)').text(),
+                            image: $(iterator).find('.team p:nth-child(3) > img')[0].attribs.src,
+                        },
+                        score: $(iterator).find('.team .score').html()
+                    })
 
                     countNextDay++
                 }
-                console.log(`run${new Date().toLocaleTimeString()}`)
+                console.log(`run ${new Date().toLocaleTimeString()}`)
                 try {
-                    fs.createWriteStream(res.options.filename).write(JSON.stringify(data));
+                    const dataSource = new DataSource()
+
+                    dataSource.today = Base64.encode(JSON.stringify(data.today))
+                    dataSource.tomorrow = Base64.encode(JSON.stringify(data.tomorrow))
+                    dataSource.after_tomorrow = Base64.encode(JSON.stringify(data.afterTomorrow))
+                    dataSource.next_day_after_tomorrow = Base64.encode(JSON.stringify(data.nextDay))
+
+                    dataSource.save()
+                        // fs.createWriteStream(res.options.filename).write(JSON.stringify(data));
                 } catch (error) {
-                    console.log(error)
+                    console.log(`error ${new Date().toLocaleTimeString()} ${error}`)
                 }
 
             }
