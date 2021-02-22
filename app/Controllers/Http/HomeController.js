@@ -6,9 +6,7 @@
 
 const Home = use('App/Models/Home')
 const Response = use("App/Helpers/Response");
-const Helpers = use('Helpers')
 const Log = use("App/Helpers/Log");
-const DataSource = use("App/Models/DataSource");
 const Database = use('Database')
 const Base64 = use("App/Helpers/Base64");
 const moment = require('moment')

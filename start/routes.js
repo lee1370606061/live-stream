@@ -33,14 +33,23 @@ Route.group(() => {
     Route.post('/live/save', 'LiveController.store').middleware('auth')
     Route.post('/live/get', 'LiveController.show').middleware('auth')
 
-    Route.post('/getData', ({ response }) => {
+    Route.post('/getData', async({ response }) => {
         GetData()
         return Response(response, {})
     }).middleware('auth')
 
-
     for (const route of UserController) {
         Route.post(route, `UserController.${route}`).middleware('auth');
+    }
+    const PromoteController = ["saveOffer", "deleteOffer", "saveCategory", "deleteCategory", "saveProduct", "deleteProduct", "savePromoteSetting"];
+
+    Route.post('promote/getOffer', 'PromoteController.getOffer')
+    Route.post('promote/getCategory', 'PromoteController.getCategory')
+    Route.post('promote/getProduct', 'PromoteController.getProduct')
+    Route.post('promote/getPromoteSetting', 'PromoteController.getPromoteSetting')
+
+    for (const route of PromoteController) {
+        Route.post(`promote/${route}`, `PromoteController.${route}`).middleware('auth');
     }
 }).prefix("api");
 

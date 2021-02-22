@@ -9,7 +9,6 @@ const Home = use('App/Models/Home')
 const Response = use("App/Helpers/Response");
 const Database = use('Database')
 const Base64 = use("App/Helpers/Base64");
-const moment = require('moment')
 
 /**
  * Resourceful controller for interacting with lives
@@ -55,7 +54,7 @@ class LiveController {
 
         let result = {}
         for (const iterator of JSON.parse(Base64.decode(tempData[0][params.type]))) {
-            if (iterator.id == params.id) result = await iterator
+            if (iterator.id && iterator.id == params.id) result = await iterator
         }
         console.log(result)
         return view.render('live', { data: result, liveDetails: liveDetails, homeDetails: homeDetails })

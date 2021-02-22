@@ -1,10 +1,11 @@
 const Crawler = require("crawler");
 const fs = require('fs');
 
-const Response = use("App/Helpers/Response");
+
 const Base64 = use("App/Helpers/Base64");
 const DataSource = use("App/Models/DataSource");
 const Helpers = use('Helpers')
+const moment = require('moment')
 
 const GetData = () => {
     const crawler = new Crawler({
@@ -159,7 +160,8 @@ const GetData = () => {
                     dataSource.after_tomorrow = Base64.encode(JSON.stringify(data.afterTomorrow))
                     dataSource.next_day_after_tomorrow = Base64.encode(JSON.stringify(data.nextDay))
 
-                    dataSource.save()
+                    await DataSource.query().where('created_at', '>', moment().subtract(10, 'minutes').utc().format()).delete()
+                    await dataSource.save()
                         // fs.createWriteStream(res.options.filename).write(JSON.stringify(data));
                 } catch (error) {
                     console.log(`error ${new Date().toLocaleTimeString()} ${error}`)
