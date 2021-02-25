@@ -14,7 +14,7 @@ const GetData = () => {
         headers: {
             userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
         },
-        callback: async function(err, res, done) {
+        callback: async function (err, res, done) {
             if (err) {
                 console.error(err.stack);
             } else {
@@ -160,11 +160,19 @@ const GetData = () => {
                     dataSource.after_tomorrow = Base64.encode(JSON.stringify(data.afterTomorrow))
                     dataSource.next_day_after_tomorrow = Base64.encode(JSON.stringify(data.nextDay))
 
-                    await DataSource.query().where('created_at', '>', moment().subtract(10, 'minutes').utc().format()).delete()
                     await dataSource.save()
-                        // fs.createWriteStream(res.options.filename).write(JSON.stringify(data));
+                    // fs.createWriteStream(res.options.filename).write(JSON.stringify(data));
                 } catch (error) {
                     console.log(`error ${new Date().toLocaleTimeString()} ${error}`)
+                }
+
+                try {
+                    const deleteData = await DataSource.query().where('created_at', '<', moment().subtract(10, 'minutes').utc().format()).fetch()
+                    deleteData.rows.map(value => {
+                        value.delete()
+                    })
+                } catch (error) {
+                    console.log(`deleteData ${new Date().toLocaleTimeString()} ${error}`)
                 }
 
             }
@@ -184,7 +192,7 @@ const GetData = () => {
             const crawler = new Crawler({
                 encoding: null,
                 jQuery: true, // set false to suppress warning message.
-                callback: function(err, res, done) {
+                callback: function (err, res, done) {
                     if (err) {
                         console.error(err.stack);
                     } else {
